@@ -120,6 +120,12 @@ jobs:
         with:
           submodules: true
 
+      - name: Checkout MaaCommonAssets
+        uses: actions/checkout@v4
+        with:
+          repository: MaaXYZ/MaaCommonAssets
+          path: assets/MaaCommonAssets
+
       - name: Download MaaFramework
         uses: robinraju/release-downloader@v1
         with:
