@@ -1,0 +1,86 @@
+{
+    "StartDistantLarcuss": {
+        "next": [
+            "WorldEventBattleFlow"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Distant",
+                "roi": [
+                    534,
+                    172,
+                    260,
+                    59
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    713,
+                    497,
+                    83,
+                    38
+                ]
+            }
+        }
+    },
+    "StartTestOfLight": {
+        "next": [
+            "WorldEventBattleFlow"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Test",
+                "roi": [
+                    534,
+                    172,
+                    260,
+                    59
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    713,
+                    497,
+                    83,
+                    38
+                ]
+            }
+        }
+    },
+    "StartSpaceTimePhantom": {
+        "next": [
+            "WorldEventBattleFlow"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Space-Time",
+                "roi": [
+                    534,
+                    172,
+                    260,
+                    59
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    713,
+                    497,
+                    83,
+                    38
+                ]
+            }
+        }
+    }
+}

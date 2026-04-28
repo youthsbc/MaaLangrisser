@@ -1,0 +1,362 @@
+{
+    "Arena": {
+        "next": [
+            "ClickArenaButton"
+        ]
+    },
+    "ClickArenaButton": {
+        "next": [
+            "ClickArena"
+        ],
+        "post_wait_freezes": 500,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "mainscreen/ArenaIcon.png",
+                "roi": [
+                    1182,
+                    298,
+                    91,
+                    54
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "ClickArena": {
+        "next": [
+            "InArenaScreen"
+        ],
+        "post_wait_freezes": 500,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "mainscreen/NormalArena.png",
+                "roi": [
+                    178,
+                    213,
+                    104,
+                    69
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    152,
+                    284,
+                    150,
+                    197
+                ]
+            }
+        }
+    },
+    "InArenaScreen": {
+        "next": [
+            "ZeroArenaTicketsLeft",
+            "ClickChallengeForHardestEnemy"
+        ],
+        "post_wait_freezes": 1000,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "arena/InNormalArenaIcon.png",
+                "roi": [
+                    1087,
+                    14,
+                    57,
+                    52
+                ]
+            }
+        }
+    },
+    "ZeroArenaTicketsLeft": {
+        "next": [
+            "ClickBackButtonImageUntilHome"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "0/5",
+                    "0l5",
+                    "0",
+                    "015"
+                ],
+                "roi": [
+                    414,
+                    1,
+                    74,
+                    54
+                ]
+            }
+        }
+    },
+    "ClickChallengeForHardestEnemy": {
+        "next": [
+            "ClickAutoBattle",
+            "ClickChallengeForHardestEnemy"
+        ],
+        "pre_delay": 1000,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "CHALLENGE",
+                    "Challenge",
+                    "Chall"
+                ],
+                "roi": [
+                    325,
+                    499,
+                    141,
+                    46
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "ClickAutoBattle": {
+        "next": [
+            "ClickConfirmAutoBattleMode",
+            "ClickConfirmForArena"
+        ],
+        "post_wait_freezes": 500,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Auto",
+                "roi": [
+                    408,
+                    596,
+                    174,
+                    48
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "ClickConfirmAutoBattleMode": {
+        "next": [
+            "ClickSkipBattle",
+            "[JumpBack]ClickAttackToStartBattle"
+        ],
+        "post_wait_freezes": 1500,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Confirm",
+                "roi": [
+                    687,
+                    419,
+                    138,
+                    74
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    704,
+                    436,
+                    98,
+                    36
+                ]
+            }
+        }
+    },
+    "ClickConfirmForArena": {
+        "next": [
+            "ClickSkipBattle",
+            "[JumpBack]ClickAttackToStartBattle"
+        ],
+        "pre_wait_freezes": 2000,
+        "recognition": {
+            "type": "DirectHit"
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    700,
+                    437,
+                    112,
+                    35
+                ]
+            }
+        }
+    },
+    "ClickSkipBattle": {
+        "next": [
+            "ConfirmSkipBattle",
+            "TapToExitOutOfBattleReportScreen"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "battle/SkipBattleButton.png",
+                "roi": [
+                    161,
+                    17,
+                    139,
+                    46
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "ConfirmSkipBattle": {
+        "next": [
+            "TapToExitOutOfBattleReportScreen"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "battle/ConfirmSkipBattleButton.png",
+                "roi": [
+                    702,
+                    407,
+                    78,
+                    44
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "TapToExitOutOfBattleReportScreen": {
+        "next": [
+            "TapOnScreenForPostBattleReward"
+        ],
+        "post_delay": 2000,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "battle/PostBattleIcon.png",
+                "roi": [
+                    312,
+                    189,
+                    62,
+                    58
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1107,
+                    475,
+                    94,
+                    122
+                ]
+            }
+        }
+    },
+    "TapOnScreenForPostBattleReward": {
+        "next": [
+            "TapOnScreenToExitOutOfPostBattleRewardScreen"
+        ],
+        "post_delay": 1500,
+        "recognition": {
+            "type": "DirectHit"
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    700,
+                    437,
+                    112,
+                    35
+                ]
+            }
+        }
+    },
+    "TapOnScreenToExitOutOfPostBattleRewardScreen": {
+        "next": [
+            "ClickToAcceptRewardInArena"
+        ],
+        "recognition": {
+            "type": "DirectHit"
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    700,
+                    437,
+                    112,
+                    35
+                ]
+            }
+        }
+    },
+    "ClickToAcceptRewardInArena": {
+        "next": [
+            "ClickToAcceptRewardInArena2"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "arena/ArenaWaitingForReward.png",
+                "roi": [
+                    1196,
+                    77,
+                    65,
+                    66
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    139,
+                    136,
+                    137,
+                    166
+                ]
+            }
+        }
+    },
+    "ClickToAcceptRewardInArena2": {
+        "next": [
+            "InArenaScreen"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "arena/ArenaWaitingForReward.png",
+                "roi": [
+                    1196,
+                    77,
+                    65,
+                    66
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    139,
+                    136,
+                    137,
+                    166
+                ]
+            }
+        }
+    }
+}

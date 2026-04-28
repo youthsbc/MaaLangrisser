@@ -1,0 +1,94 @@
+{
+    "Missions": {
+        "next": [
+            "OpenMissions"
+        ]
+    },
+    "OpenMissions": {
+        "next": [
+            "MissionQuickClaim"
+        ],
+        "post_wait_freezes": 1500,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "Missions",
+                    "issions"
+                ],
+                "roi": [
+                    533,
+                    674,
+                    111,
+                    46
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    564,
+                    645,
+                    55,
+                    42
+                ]
+            }
+        }
+    },
+    "MissionQuickClaim": {
+        "next": [
+            "ConfirmMissionReward"
+        ],
+        "post_wait_freezes": 500,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "Claim",
+                    "Quick",
+                    "QuickClaim",
+                    "Quick Claim"
+                ],
+                "roi": [
+                    1085,
+                    568,
+                    99,
+                    102
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1099,
+                    592,
+                    72,
+                    58
+                ]
+            }
+        }
+    },
+    "ConfirmMissionReward": {
+        "next": [
+            "ConfirmIsOnHomeScreen",
+            "[JumpBack]ClickBackButton"
+        ],
+        "post_wait_freezes": 500,
+        "recognition": {
+            "type": "DirectHit"
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    34,
+                    19,
+                    86,
+                    40
+                ]
+            }
+        }
+    }
+}

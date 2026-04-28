@@ -1,0 +1,91 @@
+{
+    "Friend": {
+        "next": [
+            "OpenFriendMenu"
+        ]
+    },
+    "OpenFriendMenu": {
+        "next": [
+            "FriendGiveAll"
+        ],
+        "post_wait_freezes": 2500,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "Store",
+                    "tore"
+                ],
+                "roi": [
+                    450,
+                    675,
+                    83,
+                    45
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    24,
+                    370,
+                    43,
+                    34
+                ]
+            }
+        }
+    },
+    "FriendGiveAll": {
+        "pre_wait_freezes": 1000,
+        "next": [
+            "FriendClaimAll"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "Give All",
+                    "GiveAll",
+                    "Give",
+                    "All"
+                ],
+                "roi": [
+                    185,
+                    622,
+                    135,
+                    54
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "FriendClaimAll": {
+        "pre_wait_freezes": 1000,
+        "next": [
+            "ClickBackButtonImageUntilHome"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "ClaimAll",
+                    "Claim All",
+                    "Claim",
+                    "claim"
+                ],
+                "roi": [
+                    410,
+                    620,
+                    135,
+                    48
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    }
+}

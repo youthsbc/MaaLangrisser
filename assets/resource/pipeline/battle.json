@@ -1,0 +1,71 @@
+{
+    "ClickAttackToStartBattle": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "battle/StartBattleIcon.png",
+                "roi": [
+                    1164,
+                    596,
+                    83,
+                    58
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "EnableAuto": {
+        "next": [
+            "ConfirmedAutoEnabled",
+            "DoEnableAuto",
+            "[JumpBack]ClickAttackToStartBattle"
+        ]
+    },
+    "ConfirmedAutoEnabled": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Auto",
+                "roi": [
+                    5,
+                    7,
+                    150,
+                    66
+                ]
+            }
+        }
+    },
+    "DoEnableAuto": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "AUTO",
+                "roi": [
+                    1173,
+                    179,
+                    103,
+                    77
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "BattleReportScreenDetected": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Battle",
+                "roi": [
+                    485,
+                    128,
+                    300,
+                    66
+                ]
+            }
+        }
+    }
+}

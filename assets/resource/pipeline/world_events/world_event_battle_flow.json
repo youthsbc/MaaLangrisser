@@ -1,0 +1,116 @@
+{
+    "WorldEventBattleFlow": {
+        "next": [
+            "WEClickAttackToStartBattle"
+        ]
+    },
+    "WEClickAttackToStartBattle": {
+        "next": [
+            "WEBattleReportScreenDetected",
+            "WECancelForDefeat",
+            "WEEnableAuto"
+        ],
+        "timeout": 3000000,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "battle/StartBattleIcon.png",
+                "roi": [
+                    1164,
+                    596,
+                    83,
+                    58
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "WEEnableAuto": {
+        "post_delay": 1000,
+        "next": [
+            "WEBattleReportScreenDetected",
+            "WECancelForDefeat"
+        ],
+        "rate_limit": 5000,
+        "timeout": 3000000,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "AUTO",
+                "roi": [
+                    1173,
+                    179,
+                    103,
+                    77
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "WECancelForDefeat": {
+        "next": [
+            "WEConfirmIsOnHomeScreenThenStartWorldEvent",
+            "[JumpBack]TapToContinue"
+        ],
+        "pre_delay": 3000,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "Cancel",
+                    "Cance",
+                    "Canc"
+                ],
+                "roi": [
+                    491,
+                    432,
+                    100,
+                    44
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "WEBattleReportScreenDetected": {
+        "next": [
+            "WEConfirmIsOnHomeScreenThenStartWorldEvent",
+            "[JumpBack]TapToContinue"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Battle",
+                "roi": [
+                    485,
+                    128,
+                    300,
+                    66
+                ]
+            }
+        }
+    },
+    "WEConfirmIsOnHomeScreenThenStartWorldEvent": {
+        "next": [
+            "WorldEvent"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "start/MainScreenIcon2.png",
+                "threshold": 0.88,
+                "roi": [
+                    23,
+                    596,
+                    91,
+                    72
+                ]
+            }
+        }
+    }
+}

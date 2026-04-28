@@ -1,0 +1,158 @@
+{
+    "Summon": {
+        "next": [
+            "OpenSummon"
+        ]
+    },
+    "OpenSummon": {
+        "next": [
+            "ScrollDownSummon"
+        ],
+        "post_wait_freezes": 1500,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "mainscreen/SummonIcon.png",
+                "roi": [
+                    361,
+                    637,
+                    68,
+                    55
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "ScrollDownSummon": {
+        "next": [
+            "ScrollDownSummon2"
+        ],
+        "recognition": {
+            "type": "DirectHit"
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    1104,
+                    642,
+                    133,
+                    60
+                ],
+                "end": [
+                    1096,
+                    187,
+                    127,
+                    58
+                ]
+            }
+        }
+    },
+    "ScrollDownSummon2": {
+        "next": [
+            "OpenFriendshipVoucherSummonScreen"
+        ],
+        "post_wait_freezes": 300,
+        "recognition": {
+            "type": "DirectHit"
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    1104,
+                    642,
+                    133,
+                    60
+                ],
+                "end": [
+                    1096,
+                    187,
+                    127,
+                    58
+                ]
+            }
+        }
+    },
+    "OpenFriendshipVoucherSummonScreen": {
+        "next": [
+            "SummonOnce"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "summon/FriendshipVoucherSummon.png",
+                "roi": [
+                    1089,
+                    612,
+                    127,
+                    46
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "SummonOnce": {
+        "next": [
+            "ConfirmSummon",
+            "[JumpBack]ClickSkipSummon",
+            "[JumpBack]SwipeLeft"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "SUMMON",
+                "roi": [
+                    257,
+                    574,
+                    164,
+                    78
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "ClickSkipSummon": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "SKIP",
+                "roi": [
+                    1137,
+                    4,
+                    102,
+                    62
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "ConfirmSummon": {
+        "next": [
+            "ClickBackButton"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Confirm",
+                "roi": [
+                    371,
+                    572,
+                    186,
+                    78
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    }
+}

@@ -1,0 +1,132 @@
+{
+    "ClickTimelessTrial": {
+        "next": [
+            "AllTimelessTrialCompleted",
+            "InsideUnfinishedTimelessTrial"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/TimelessTrial.png",
+                "roi": [
+                    839,
+                    68,
+                    117,
+                    79
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "InsideUnfinishedTimelessTrial": {
+        "next": [
+            "IsAtSSSSTrial4",
+            "ClickSweepForTimelessTrial"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/InsideTimlessTrial.png",
+                "roi": [
+                    941,
+                    164,
+                    51,
+                    48
+                ]
+            }
+        }
+    },
+    "ClickSweepForTimelessTrial": {
+        "next": [
+            "ClickConfirmForTimelessTrialSweep",
+            "CloseRecoverStaminaPromptAndGoHome"
+        ],
+        "recognition": {
+            "type": "DirectHit",
+            "param": {
+                "roi": [
+                    941,
+                    164,
+                    51,
+                    48
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1045,
+                    634,
+                    52,
+                    51
+                ]
+            }
+        }
+    },
+    "ClickConfirmForTimelessTrialSweep": {
+        "next": [
+            "ClickBackButtonImageUntilHome"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Confirm",
+                "roi": [
+                    675,
+                    440,
+                    129,
+                    57
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "IsAtSSSSTrial4": {
+        "next": [
+            "ClickBackButtonImageUntilHome"
+        ],
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "upper": [
+                    196,
+                    196,
+                    196
+                ],
+                "lower": [
+                    174,
+                    175,
+                    174
+                ],
+                "roi": [
+                    1063,
+                    623,
+                    25,
+                    20
+                ]
+            }
+        }
+    },
+    "AllTimelessTrialCompleted": {
+        "next": [
+            "ClickBackButtonImageUntilHome"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Completed",
+                "roi": [
+                    519,
+                    326,
+                    213,
+                    131
+                ]
+            }
+        }
+    }
+}

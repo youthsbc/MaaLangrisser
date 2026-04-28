@@ -1,39 +1,116 @@
 <!-- markdownlint-disable MD033 MD041 -->
 <p align="center">
-  <img alt="LOGO" src="https://cdn.jsdelivr.net/gh/MaaAssistantArknights/design@main/logo/maa-logo_512x512.png" width="256" height="256" />
+  <img
+    alt="MAA logo"
+    src="./docs/images/almeda.png"
+    width="180"
+  />
 </p>
 
 <div align="center">
 
-# MaaPracticeBoilerplate
+# MaaLangrisser
+
+An automation assistant for Langrisser Mobile, powered by MaaFramework.
+
+[![license](https://img.shields.io/github/license/youthsbc/MaaLangrisser?style=flat-square)](./LICENSE)
+[![check](https://img.shields.io/github/actions/workflow/status/youthsbc/MaaLangrisser/check.yml?branch=main&label=check&style=flat-square)](https://github.com/youthsbc/MaaLangrisser/actions/workflows/check.yml)
+[![build](https://img.shields.io/github/actions/workflow/status/youthsbc/MaaLangrisser/install.yml?branch=main&label=build&style=flat-square)](https://github.com/youthsbc/MaaLangrisser/actions/workflows/install.yml)
+[![release](https://img.shields.io/github/v/release/youthsbc/MaaLangrisser?style=flat-square)](https://github.com/youthsbc/MaaLangrisser/releases)
+[![stars](https://img.shields.io/github/stars/youthsbc/MaaLangrisser?style=flat-square)](https://github.com/youthsbc/MaaLangrisser/stargazers)
 
 </div>
 
-本仓库为 [MaaFramework](https://github.com/MaaXYZ/MaaFramework) 所提供的项目模板，开发者可基于此模板直接创建自己的 MaaXXX 项目。
+## Introduction
 
-> **MaaFramework** 是基于图像识别技术、运用 [MAA](https://github.com/MaaAssistantArknights/MaaAssistantArknights) 开发经验去芜存菁、完全重写的新一代自动化黑盒测试框架。
-> 低代码的同时仍拥有高扩展性，旨在打造一款丰富、领先、且实用的开源库，助力开发者轻松编写出更好的黑盒测试程序，并推广普及。
+MaaLangrisser is a MaaFramework project for automating routine Langrisser
+Mobile tasks on Android emulators. It uses image recognition and simulated
+control to handle repeatable daily actions, so you can spend less time tapping
+through menus.
 
-## 即刻开始
+The current resource set targets the Global Server English client.
 
-请阅读[如何开发](./docs/zh_cn/develop/how_to_develop.md)
+> This project is community-maintained and is not affiliated with the official
+> Langrisser Mobile team.
 
-## 生态共建
+## Download
 
-MAA 正计划建设为一类项目，而非舟的单一软件。
+Download the latest package from [GitHub Releases](https://github.com/youthsbc/MaaLangrisser/releases).
 
-若您的项目依赖于 MaaFramework，我们欢迎您将它命名为 MaaXXX, MXA, MAX 等等。当然，这是许可而不是限制，您也可以自由选择其他与 MAA 无关的名字，完全取决于您自己的想法！
+Release artifacts are built for:
 
-同时，我们也非常欢迎您提出 PR，在 [社区项目列表](https://github.com/MaaXYZ/MaaFramework#%E7%A4%BE%E5%8C%BA%E9%A1%B9%E7%9B%AE) 中添加上您的项目！
+- Windows x86_64 / aarch64
+- macOS x86_64 / aarch64
+- Linux x86_64
 
-## 常见问题
+## Quick Start
 
-请阅读[常见问题](./docs/zh_cn/develop/faq.md)
+1. Install and start an Android emulator, then launch Langrisser Mobile.
+2. Extract the MaaLangrisser release package.
+3. Run `MaaLangrisser.exe` on Windows, `MaaLangrisser.app` on macOS, or `MaaLangrisser` on Linux.
+4. Select the `Android emulator` controller and the `Global Server - English` resource.
+5. Choose the tasks you want to run, then start execution.
 
-## 鸣谢
+If MaaLangrisser cannot find your emulator, check that ADB is enabled in the
+emulator settings and that the game screen is visible before starting tasks.
 
-本项目由 **[MaaFramework](https://github.com/MaaXYZ/MaaFramework)** 强力驱动！
+## Features
 
-感谢以下开发者对本项目作出的贡献（下面链接改成你自己的项目地址）:
+Currently available tasks include:
 
-[![Contributors](https://contrib.rocks/image?repo=MaaXYZ/MaaFramework&max=1000)](https://github.com/MaaXYZ/MaaFramework/graphs/contributors)
+- Start the game and enter the world map.
+- Collect Floating Realm resources.
+- Sweep Bonds shards for the top 3 characters.
+- Sweep Time Rift elite stages.
+- Run daily Arena battles.
+- Use Friendship Summon vouchers.
+- Claim mail, friend points, daily mission rewards, and weekly Relics of the Gods.
+- Clear selected world events.
+- Sweep Secret Realm daily content, Ways of the Laws, Eternal Temple, Stolen Treasure, and Timeless Trial.
+- Run Ways of the Laws manually with stage selection.
+- Stop the app after automation finishes.
+
+Some tasks provide options in the MaaFramework-compatible UI, such as Time Rift
+stage, Aniki Gym stage, and Ways of the Laws stage.
+
+## Development
+
+This project follows the standard MaaFramework project layout:
+
+- `assets/interface.json`: project interface and UI task definitions.
+- `assets/resource/pipeline`: automation pipelines.
+- `assets/resource/image`: recognition templates.
+- `tools/install.py`: packaging script used by CI releases.
+
+Useful local commands:
+
+```powershell
+git submodule update --init --recursive
+npm ci
+npx @nekosu/maa-tools check
+python tools/configure.py
+python tools/install.py v0.0.1-local win x86_64
+```
+
+For MaaFramework concepts and project interface details, see the [MaaFramework documentation](https://maafw.com/).
+
+## Community
+
+Bug reports, task requests, and recognition template improvements are welcome
+through [Issues](https://github.com/youthsbc/MaaLangrisser/issues) and
+[Pull Requests](https://github.com/youthsbc/MaaLangrisser/pulls).
+
+When reporting recognition problems, please include your operating system,
+emulator name, emulator resolution/DPI, the affected task, and an unobstructed
+screenshot from the emulator or ADB.
+
+## Acknowledgements
+
+MaaLangrisser is built with [MaaFramework](https://github.com/MaaXYZ/MaaFramework) and the generic MaaFramework UI tooling.
+
+Thanks to the Maa community and all contributors who make project templates,
+tools, documentation, and common assets available.
+
+Thanks to the following developers for contributing to this project:
+
+[![Contributors](https://contrib.rocks/image?repo=youthsbc/MaaLangrisser&max=1000)](https://github.com/youthsbc/MaaLangrisser/graphs/contributors)

@@ -1,0 +1,85 @@
+{
+    "Mail": {
+        "next": [
+            "ClickMail"
+        ]
+    },
+    "ClickMail": {
+        "next": [
+            "ClaimAll",
+            "QuitMail"
+        ],
+        "post_wait_freezes": 1000,
+        "recognition": {
+            "type": "DirectHit"
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    25,
+                    234,
+                    44,
+                    39
+                ]
+            }
+        }
+    },
+    "ClaimAll": {
+        "next": [
+            "CloseBox"
+        ],
+        "post_wait_freezes": 500,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Quick",
+                "roi": [
+                    1189,
+                    587,
+                    67,
+                    61
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "CloseBox": {
+        "next": [
+            "QuitMail"
+        ],
+        "recognition": {
+            "type": "DirectHit"
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1182,
+                    84,
+                    34,
+                    39
+                ]
+            }
+        }
+    },
+    "QuitMail": {
+        "post_wait_freezes": 500,
+        "recognition": {
+            "type": "DirectHit"
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1182,
+                    84,
+                    34,
+                    39
+                ]
+            }
+        }
+    }
+}

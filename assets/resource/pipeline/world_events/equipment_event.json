@@ -1,0 +1,91 @@
+{
+    "StartForestEncounter": {
+        "next": [
+            "WorldEventBattleFlow"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Forest",
+                "roi": [
+                    534,
+                    172,
+                    260,
+                    59
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    713,
+                    497,
+                    83,
+                    38
+                ]
+            }
+        }
+    },
+    "StartDisorientedArrow": {
+        "next": [
+            "WorldEventBattleFlow"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Disoriented",
+                "roi": [
+                    534,
+                    172,
+                    260,
+                    59
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    713,
+                    497,
+                    83,
+                    38
+                ]
+            }
+        }
+    },
+    "StartTheSwampsSecret": {
+        "next": [
+            "WorldEventBattleFlow"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "Swamp",
+                    "The Swamp",
+                    "Swamps",
+                    "Secet"
+                ],
+                "roi": [
+                    534,
+                    172,
+                    260,
+                    59
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    713,
+                    497,
+                    83,
+                    38
+                ]
+            }
+        }
+    }
+}

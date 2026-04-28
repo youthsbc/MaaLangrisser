@@ -1,0 +1,189 @@
+{
+    "StartManualWaysOfTheLaws": {
+        "next": [
+            "WotLClickAttack"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/WaysOfTheLaws.png",
+                "roi": [
+                    674,
+                    439,
+                    86,
+                    56
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "WotLClickAttack": {
+        "next": [
+            "WotLEndOnRecoverStaminaPrompt",
+            "WotLEndOnRecoverStaminaText",
+            "WotLClickAttackToStartBattle"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Recommended",
+                "roi": [
+                    668,
+                    574,
+                    233,
+                    54
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1025,
+                    639,
+                    88,
+                    43
+                ]
+            }
+        }
+    },
+    "WotLClickAttackToStartBattle": {
+        "next": [
+            "WotLEndOnRecoverStaminaPrompt",
+            "WotLEndOnRecoverStaminaText",
+            "WotLBattleReportScreenDetected",
+            "WotLCancelForDefeat",
+            "WotLEnableAuto"
+        ],
+        "timeout": 300000,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "battle/StartBattleIcon.png",
+                "roi": [
+                    1164,
+                    596,
+                    83,
+                    58
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "WotLEnableAuto": {
+        "post_delay": 1000,
+        "next": [
+            "WotLEndOnRecoverStaminaPrompt",
+            "WotLEndOnRecoverStaminaText",
+            "WotLBattleReportScreenDetected",
+            "WotLCancelForDefeat"
+        ],
+        "rate_limit": 10000,
+        "timeout": 300000,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "AUTO",
+                "roi": [
+                    1173,
+                    179,
+                    103,
+                    77
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "WotLCancelForDefeat": {
+        "next": [
+            "WotLEndOnRecoverStaminaPrompt",
+            "WotLEndOnRecoverStaminaText",
+            "WotLClickAttack",
+            "[JumpBack]TapToContinue"
+        ],
+        "rate_limit": 10000,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Cancel",
+                "roi": [
+                    491,
+                    432,
+                    89,
+                    44
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "WotLBattleReportScreenDetected": {
+        "next": [
+            "WotLEndOnRecoverStaminaPrompt",
+            "WotLEndOnRecoverStaminaText",
+            "WotLClickAttack",
+            "[JumpBack]TapToContinue"
+        ],
+        "rate_limit": 10000,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Battle",
+                "roi": [
+                    485,
+                    128,
+                    300,
+                    66
+                ]
+            }
+        }
+    },
+    "WotLEndOnRecoverStaminaPrompt": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "timerift/RecoverStaminaScreen.png",
+                "threshold": 0.6,
+                "roi": [
+                    440,
+                    170,
+                    156,
+                    167
+                ]
+            }
+        },
+        "action": {
+            "type": "StopTask"
+        }
+    },
+    "WotLEndOnRecoverStaminaText": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "RecoverStamina",
+                    "Recover Stamina",
+                    "Recover",
+                    "Stamina",
+                    "Stmina"
+                ],
+                "roi": [
+                    501,
+                    168,
+                    282,
+                    62
+                ]
+            }
+        },
+        "action": {
+            "type": "StopTask"
+        }
+    }
+}

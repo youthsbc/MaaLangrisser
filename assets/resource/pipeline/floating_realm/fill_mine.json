@@ -1,0 +1,294 @@
+{
+    "FillWithChalcopyrite": {
+        "next": [
+            "FillWithChalcopyrite2"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Mine",
+                "roi": [
+                    580,
+                    79,
+                    115,
+                    62
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    325,
+                    437,
+                    79,
+                    89
+                ]
+            }
+        }
+    },
+    "FillWithChalcopyrite2": {
+        "next": [
+            "FillWithChalcopyrite3"
+        ],
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    325,
+                    437,
+                    79,
+                    89
+                ]
+            }
+        }
+    },
+    "FillWithChalcopyrite3": {
+        "next": [
+            "FillWithChalcopyrite4"
+        ],
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    325,
+                    437,
+                    79,
+                    89
+                ]
+            }
+        }
+    },
+    "FillWithChalcopyrite4": {
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    325,
+                    437,
+                    79,
+                    89
+                ]
+            }
+        }
+    },
+    "FillWithMarble": {
+        "next": [
+            "FillWithMarble2"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Mine",
+                "roi": [
+                    580,
+                    79,
+                    115,
+                    62
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    513,
+                    443,
+                    66,
+                    81
+                ]
+            }
+        }
+    },
+    "FillWithMarble2": {
+        "next": [
+            "FillWithMarble3"
+        ],
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    513,
+                    443,
+                    66,
+                    81
+                ]
+            }
+        }
+    },
+    "FillWithMarble3": {
+        "next": [
+            "FillWithMarble4"
+        ],
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    513,
+                    443,
+                    66,
+                    81
+                ]
+            }
+        }
+    },
+    "FillWithMarble4": {
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    513,
+                    443,
+                    66,
+                    81
+                ]
+            }
+        }
+    },
+    "FillWithBluePhosphorite": {
+        "next": [
+            "FillWithBluePhosphorite2"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Mine",
+                "roi": [
+                    580,
+                    79,
+                    115,
+                    62
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    688,
+                    446,
+                    76,
+                    77
+                ]
+            }
+        }
+    },
+    "FillWithBluePhosphorite2": {
+        "next": [
+            "FillWithBluePhosphorite3"
+        ],
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    688,
+                    446,
+                    76,
+                    77
+                ]
+            }
+        }
+    },
+    "FillWithBluePhosphorite3": {
+        "next": [
+            "FillWithBluePhosphorite4"
+        ],
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    688,
+                    446,
+                    76,
+                    77
+                ]
+            }
+        }
+    },
+    "FillWithBluePhosphorite4": {
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    688,
+                    446,
+                    76,
+                    77
+                ]
+            }
+        }
+    },
+    "FillWithRedCassiterite": {
+        "next": [
+            "FillWithRedCassiterite2"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Mine",
+                "roi": [
+                    580,
+                    79,
+                    115,
+                    62
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    869,
+                    433,
+                    77,
+                    86
+                ]
+            }
+        }
+    },
+    "FillWithRedCassiterite2": {
+        "next": [
+            "FillWithRedCassiterite3"
+        ],
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    869,
+                    433,
+                    77,
+                    86
+                ]
+            }
+        }
+    },
+    "FillWithRedCassiterite3": {
+        "next": [
+            "FillWithRedCassiterite4"
+        ],
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    869,
+                    433,
+                    77,
+                    86
+                ]
+            }
+        }
+    },
+    "FillWithRedCassiterite4": {
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    869,
+                    433,
+                    77,
+                    86
+                ]
+            }
+        }
+    }
+}

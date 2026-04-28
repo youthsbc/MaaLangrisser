@@ -1,0 +1,491 @@
+{
+    "TimeRift": {
+        "next": [
+            "TimeRift_ClickAnotherWorld"
+        ]
+    },
+    "TimeRift_ClickAnotherWorld": {
+        "next": [
+            "TimeRift_ClickTimeRiftPortal"
+        ],
+        "post_delay": 700,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "timerift/AnotherWorldIcon.png",
+                "roi": [
+                    1204,
+                    388,
+                    63,
+                    55
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "TimeRift_ClickTimeRiftPortal": {
+        "pre_delay": 1500,
+        "post_delay": 700,
+        "next": [
+            "TimeRift_GoLeftUntilTimeRift1"
+        ],
+        "recognition": {
+            "type": "DirectHit"
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    188,
+                    332,
+                    121,
+                    121
+                ]
+            }
+        }
+    },
+    "TimeRift_GoLeftUntilTimeRift1": {
+        "next": [
+            "TimeRift_AtTimeRift1",
+            "[JumpBack]TimeRift_SwipeLeftToTimeRift1"
+        ],
+        "recognition": {
+            "type": "DirectHit"
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    367,
+                    303,
+                    98,
+                    90
+                ]
+            }
+        }
+    },
+    "TimeRift_AtTimeRift1": {
+        "next": [
+            "TimeRift_SwipeRightFrom1To13"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "timerift/TimeRift1.png",
+                "roi": [
+                    468,
+                    155,
+                    362,
+                    346
+                ]
+            }
+        }
+    },
+    "TimeRift_SwipeLeftToTimeRift1": {
+        "post_wait_freezes": 300,
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    243,
+                    380,
+                    68,
+                    28
+                ],
+                "end": [
+                    1036,
+                    400,
+                    58,
+                    32
+                ]
+            }
+        }
+    },
+    "TimeRift_SwipeRightFrom1To13": {
+        "repeat": 3,
+        "repeat_wait_freezes": 300,
+        "post_wait_freezes": 300,
+        "next": [
+            "TimeRift_ClickTimeRift13"
+        ],
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    1036,
+                    400,
+                    58,
+                    32
+                ],
+                "end": [
+                    402,
+                    384,
+                    68,
+                    28
+                ]
+            }
+        }
+    },
+    "TimeRift_ClickTimeRift13": {
+        "post_wait_freezes": 500,
+        "next": [
+            "TimeRift_EliteModeOn",
+            "TimeRift_ToggleEliteModeOn"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "timerift/TimeRift13.png",
+                "roi": [
+                    495,
+                    170,
+                    328,
+                    322
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "TimeRift_EliteModeOn": {
+        "next": [
+            "TimeRift_SelectStage13_5"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "timerift/EliteMode-on.png",
+                "roi": [
+                    1074,
+                    32,
+                    141,
+                    140
+                ]
+            }
+        }
+    },
+    "TimeRift_ToggleEliteModeOn": {
+        "post_wait_freezes": 500,
+        "next": [
+            "TimeRift_EliteModeOn"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "timerift/EliteMode-off.png",
+                "roi": [
+                    1074,
+                    32,
+                    141,
+                    140
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "TimeRift_SelectStage13_5": {
+        "post_wait_freezes": 500,
+        "next": [
+            "TimeRift_ClickSweepButton"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "timerift/13-5-elite.png",
+                "roi": [
+                    830,
+                    149,
+                    146,
+                    169
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "TimeRift_SelectStage13_6": {
+        "post_wait_freezes": 500,
+        "next": [
+            "TimeRift_ClickSweepButton"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "timerift/13-6-elite.png",
+                "roi": [
+                    1102,
+                    271,
+                    161,
+                    166
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "TimeRift_SelectStage13_7": {
+        "post_wait_freezes": 500,
+        "next": [
+            "TimeRift_ClickSweepButton"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "timerift/13-7-elite.png",
+                "roi": [
+                    799,
+                    418,
+                    149,
+                    163
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "TimeRift_TODO_SelectStageAndSweep": {
+        "next": []
+    },
+    "TimeRift_ClickSweepButton": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "TimeRift_DailySweepLimitReached",
+            "[JumpBack]TimeRift_RefillStamina",
+            "[JumpBack]TimeRift_RefillStaminaText",
+            "TimeRift_ClickSweepAgainFirst",
+            "TimeRift_ClickSweepButton"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "timerift/TimeRiftSweepPromptIsForeground.png",
+                "roi": [
+                    712,
+                    85,
+                    234,
+                    153
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    723,
+                    467,
+                    98,
+                    41
+                ]
+            }
+        }
+    },
+    "TimeRift_ClickSweepAgainFirst": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "TimeRift_DailySweepLimitReached",
+            "[JumpBack]TimeRift_RefillStamina",
+            "[JumpBack]TimeRift_RefillStaminaText",
+            "TimeRift_ClickSweepAgainSecond",
+            "TimeRift_ClickSweepAgainFirst"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "Sweep Count",
+                    "Sweep",
+                    "Count",
+                    "sweep count",
+                    "sweep",
+                    "count"
+                ],
+                "roi": [
+                    455,
+                    12,
+                    369,
+                    165
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    703,
+                    587,
+                    91,
+                    49
+                ]
+            }
+        }
+    },
+    "TimeRift_ClickSweepAgainSecond": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "TimeRift_DailySweepLimitReached",
+            "[JumpBack]TimeRift_RefillStamina",
+            "[JumpBack]TimeRift_RefillStaminaText",
+            "TimeRift_End",
+            "TimeRift_ClickSweepAgainSecond"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "Sweep Count",
+                    "Sweep",
+                    "Count",
+                    "sweep count",
+                    "sweep",
+                    "count"
+                ],
+                "roi": [
+                    455,
+                    12,
+                    369,
+                    165
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    703,
+                    587,
+                    91,
+                    49
+                ]
+            }
+        }
+    },
+    "TimeRift_DailySweepLimitReached": {
+        "next": [
+            "TimeRift_End"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "daily sweep",
+                    "sweep limit",
+                    "daily",
+                    "limit",
+                    "reached",
+                    "stage"
+                ],
+                "roi": [
+                    219,
+                    273,
+                    839,
+                    168
+                ]
+            }
+        }
+    },
+    "TimeRift_End": {
+        "next": [
+            "ClickBackButtonImageUntilHome"
+        ]
+    },
+    "TimeRift_RefillStamina": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "TimeRift_DismissBurgerUsed"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "timerift/RecoverStaminaScreen.png",
+                "threshold": 0.6,
+                "roi": [
+                    440,
+                    170,
+                    156,
+                    167
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    871,
+                    228,
+                    56,
+                    40
+                ]
+            }
+        }
+    },
+    "TimeRift_RefillStaminaText": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "TimeRift_DismissBurgerUsed"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "RecoverStamina",
+                    "Recover Stamina",
+                    "Recover",
+                    "Stamina",
+                    "Stmina"
+                ],
+                "roi": [
+                    501,
+                    168,
+                    282,
+                    62
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    871,
+                    228,
+                    56,
+                    40
+                ]
+            }
+        }
+    },
+    "TimeRift_DismissBurgerUsed": {
+        "post_wait_freezes": 500,
+        "next": [],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "timerift/BurgerUsed.png",
+                "roi": [
+                    609,
+                    334,
+                    63,
+                    56
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    819,
+                    67,
+                    148,
+                    28
+                ]
+            }
+        }
+    }
+}

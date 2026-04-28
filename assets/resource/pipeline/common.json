@@ -1,0 +1,182 @@
+{
+    "ClickBackButton": {
+        "post_wait_freezes": 500,
+        "recognition": {
+            "type": "DirectHit"
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    34,
+                    19,
+                    86,
+                    40
+                ]
+            }
+        }
+    },
+    "ClickBackButtonImage": {
+        "post_wait_freezes": 500,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "common/BackButton.png",
+                "roi": [
+                    47,
+                    14,
+                    62,
+                    50
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "ClickBackButtonImageUntilHome": {
+        "next": [
+            "ConfirmIsOnHomeScreen",
+            "[JumpBack]ClickBackButtonImage"
+        ]
+    },
+    "ClickBackButtonNoWait": {
+        "recognition": {
+            "type": "DirectHit"
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    34,
+                    19,
+                    86,
+                    40
+                ]
+            }
+        }
+    },
+    "CloseRecoverStaminaPromptAndGoHome": {
+        "next": [
+            "ClickBackButtonImageUntilHome"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "RecoverStamina",
+                    "Recover Stamina",
+                    "Recover",
+                    "Stmina"
+                ],
+                "roi": [
+                    501,
+                    168,
+                    282,
+                    62
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    978,
+                    181,
+                    25,
+                    28
+                ]
+            }
+        }
+    },
+    "GoHomeIfNoStamina": {
+        "next": [
+            "ConfirmIsOnHomeScreen",
+            "[JumpBack]ClickBackButton"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Recover"
+            }
+        }
+    },
+    "SwipeLeft": {
+        "post_delay": 300,
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    1036,
+                    400,
+                    58,
+                    32
+                ],
+                "end": [
+                    243,
+                    380,
+                    68,
+                    28
+                ]
+            }
+        }
+    },
+    "SwipeUp": {
+        "post_wait_freezes": 300,
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    587,
+                    555,
+                    141,
+                    77
+                ],
+                "end": [
+                    587,
+                    320,
+                    141,
+                    66
+                ]
+            }
+        }
+    },
+    "SwipeLeftTimeRift": {
+        "post_wait_freezes": 300,
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    1036,
+                    400,
+                    58,
+                    32
+                ],
+                "end": [
+                    243,
+                    380,
+                    68,
+                    28
+                ]
+            }
+        }
+    },
+    "TapToContinue": {
+        "post_wait_freezes": 300,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "TAP TO",
+                "roi": [
+                    908,
+                    655,
+                    342,
+                    61
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    }
+}

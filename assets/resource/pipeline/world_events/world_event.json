@@ -1,0 +1,199 @@
+{
+    "WorldEvent": {
+        "next": [
+            "OpenWorldEvent"
+        ]
+    },
+    "OpenWorldEvent": {
+        "next": [
+            "SelectCrystalEvent",
+            "SelectEquipmentEvent",
+            "SelectCoinEvent",
+            "CloseEventPopup",
+            "NoWorldEventFound"
+        ],
+        "post_wait_freezes": 1000,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "mainscreen/WorldEventIcon.png",
+                "roi": [
+                    1183,
+                    93,
+                    87,
+                    78
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "NoWorldEventFound": {
+        "pre_delay": 500,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "mainscreen/WorldEventIcon.png",
+                "roi": [
+                    1183,
+                    93,
+                    87,
+                    78
+                ]
+            }
+        },
+        "action": {
+            "type": "StopTask"
+        }
+    },
+    "SelectCrystalEvent": {
+        "next": [
+            "EnterTheRecognizedWorldEvent",
+            "CloseRecoverStaminaPrompt"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "world_events/CrystalEventIcon.png",
+                "roi": [
+                    783,
+                    124,
+                    114,
+                    545
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "SelectEquipmentEvent": {
+        "next": [
+            "EnterTheRecognizedWorldEvent",
+            "CloseRecoverStaminaPrompt"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "world_events/EquipmentEventIcon.png",
+                "roi": [
+                    783,
+                    124,
+                    114,
+                    545
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "SelectCoinEvent": {
+        "next": [
+            "EnterTheRecognizedWorldEvent",
+            "CloseRecoverStaminaPrompt"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "world_events/CoinEventIcon.png",
+                "roi": [
+                    783,
+                    124,
+                    114,
+                    545
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "EnterTheRecognizedWorldEvent": {
+        "next": [
+            "WorldEventBattleFlow",
+            "CloseRecoverStaminaPrompt"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "GO",
+                    "Go"
+                ],
+                "roi": [
+                    712,
+                    487,
+                    91,
+                    55
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "CloseRecoverStaminaPrompt": {
+        "next": [
+            "CloseEventPopup"
+        ],
+        "post_delay": 400,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "RecoverStamina",
+                    "Recover Stamina",
+                    "Recover",
+                    "Stmina"
+                ],
+                "roi": [
+                    501,
+                    168,
+                    282,
+                    62
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    978,
+                    181,
+                    25,
+                    28
+                ]
+            }
+        }
+    },
+    "CloseEventPopup": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "Event",
+                    "vekt"
+                ],
+                "roi": [
+                    969,
+                    53,
+                    127,
+                    61
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    362,
+                    51,
+                    58,
+                    20
+                ]
+            }
+        }
+    }
+}

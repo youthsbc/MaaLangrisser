@@ -447,8 +447,18 @@ deps/tools/*
 build
 install
 
+# Local runtime/package inputs
+maafw/
+interface.json
+mxu
+mxu.exe
+
 # Tools
 tools/ImageCropper/**/*.png
 
 config
 debug
+
+cache
+
+dist

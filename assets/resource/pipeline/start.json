@@ -1,0 +1,180 @@
+{
+    "Start": {
+        "next": [
+            "CloseGameForRestarting"
+        ]
+    },
+    "ClickBackButtonUntilHome": {
+        "next": [
+            "ConfirmIsOnHomeScreen",
+            "[JumpBack]ClickBackButtonNoWait"
+        ]
+    },
+    "ConfirmIsOnHomeScreen": {
+        "post_delay": 2000,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "start/MainScreenIcon.png",
+                "threshold": 0.97,
+                "roi": [
+                    1179,
+                    608,
+                    62,
+                    74
+                ]
+            }
+        }
+    },
+    "LaunchGame": {
+        "next": [
+            "CloseAnnouncements",
+            "TapToStart"
+        ],
+        "timeout": 180000,
+        "action": {
+            "type": "StartApp",
+            "param": {
+                "package": "com.zlongame.un.mhmnz/com.zlongame.PDUnitySDK.MainActivity"
+            }
+        }
+    },
+    "CloseGameForRestarting": {
+        "next": [
+            "LaunchGame"
+        ],
+        "post_delay": 8000,
+        "action": {
+            "type": "StopApp",
+            "param": {
+                "package": "com.zlongame.un.mhmnz"
+            }
+        }
+    },
+    "CloseAnnouncements": {
+        "next": [
+            "TapToStart"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "start/announcementX.png",
+                "roi": [
+                    1119,
+                    35,
+                    77,
+                    85
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1138,
+                    59,
+                    36,
+                    32
+                ]
+            }
+        }
+    },
+    "CloseEvents": {
+        "next": [
+            "EnterWorld",
+            "CloseEvents2"
+        ],
+        "post_delay": 3000,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "start/announcementX.png"
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "CloseEvents2": {
+        "next": [
+            "EnterWorld"
+        ],
+        "post_delay": 3000,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "start/announcementX.png"
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "TapToStart": {
+        "next": [
+            "CloseEvents",
+            "EnterWorld"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "Choose",
+                    "Server",
+                    "server",
+                    "choose",
+                    "Choose Server"
+                ],
+                "roi": [
+                    643,
+                    455,
+                    185,
+                    149
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    562,
+                    185,
+                    163,
+                    73
+                ]
+            }
+        }
+    },
+    "EnterWorld": {
+        "pre_delay": 1000,
+        "post_delay": 1000,
+        "next": [
+            "ConfirmIsOnHomeScreen",
+            "[JumpBack]EnterWorld"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "start/MainLobbyHero.png",
+                "roi": [
+                    34,
+                    578,
+                    103,
+                    66
+                ],
+                "threshold": 0.96
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1132,
+                    555,
+                    114,
+                    111
+                ]
+            }
+        }
+    }
+}

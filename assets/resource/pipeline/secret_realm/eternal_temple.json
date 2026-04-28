@@ -1,0 +1,217 @@
+{
+    "ClickEternalTemple": {
+        "next": [
+            "ClickSweepIconForEternalTemple"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/EternalTemple.png",
+                "roi": [
+                    728,
+                    188,
+                    117,
+                    82
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "ClickSweepIconForEternalTemple": {
+        "next": [
+            "ConfirmSweepForEternalTemple",
+            "ClickBackButtonImageUntilHome"
+        ],
+        "post_delay": 2000,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/SweepIcon.png",
+                "roi": [
+                    953,
+                    511,
+                    71,
+                    70
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "ConfirmSweepForEternalTemple": {
+        "next": [
+            "ConfirmSweepForEternalTemple2",
+            "[JumpBack]EternalTemple_RefillStamina",
+            "[JumpBack]EternalTemple_RefillStaminaText",
+            "[JumpBack]EternalTemple_RefillStaminaWideText",
+            "ConfirmSweepForEternalTemple",
+            "ClickBackButtonImageUntilHome"
+        ],
+        "post_delay": 1000,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Sweep",
+                "roi": [
+                    788,
+                    592,
+                    87,
+                    62
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "ConfirmSweepForEternalTemple2": {
+        "next": [
+            "ClickBackButtonImageUntilHome"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Confirm",
+                "roi": [
+                    690,
+                    424,
+                    106,
+                    58
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "EternalTemple_RefillStamina": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "EternalTemple_DismissBurgerUsed"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "timerift/RecoverStaminaScreen.png",
+                "threshold": 0.6,
+                "roi": [
+                    440,
+                    170,
+                    156,
+                    167
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    871,
+                    228,
+                    56,
+                    40
+                ]
+            }
+        }
+    },
+    "EternalTemple_RefillStaminaText": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "EternalTemple_DismissBurgerUsed"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "RecoverStamina",
+                    "Recover Stamina",
+                    "Recover",
+                    "Stamina",
+                    "Stmina"
+                ],
+                "roi": [
+                    501,
+                    168,
+                    282,
+                    62
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    871,
+                    228,
+                    56,
+                    40
+                ]
+            }
+        }
+    },
+    "EternalTemple_RefillStaminaWideText": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "EternalTemple_DismissBurgerUsed"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "RecoverStamina",
+                    "Recover Stamina",
+                    "Recover",
+                    "Stamina",
+                    "Stmina"
+                ],
+                "roi": [
+                    350,
+                    120,
+                    600,
+                    260
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    871,
+                    228,
+                    56,
+                    40
+                ]
+            }
+        }
+    },
+    "EternalTemple_DismissBurgerUsed": {
+        "post_wait_freezes": 500,
+        "next": [],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "timerift/BurgerUsed.png",
+                "roi": [
+                    609,
+                    334,
+                    63,
+                    56
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    819,
+                    67,
+                    148,
+                    28
+                ]
+            }
+        }
+    }
+}

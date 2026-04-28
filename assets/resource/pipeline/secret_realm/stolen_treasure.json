@@ -1,0 +1,222 @@
+{
+    "ClickStolenTreasure": {
+        "next": [
+            "ClickSweepForStolenTreasure",
+            "NoStolenTreasureKeysLeft"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/StolenTreasure.png"
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "ClickSweepForStolenTreasure": {
+        "next": [
+            "NoStolenTreasureKeysLeft",
+            "[JumpBack]StolenTreasure_RefillStamina",
+            "[JumpBack]StolenTreasure_RefillStaminaText",
+            "[JumpBack]StolenTreasure_RefillStaminaWideText",
+            "ClickSweepForStolenTreasureAgain",
+            "ClickSweepForStolenTreasure",
+            "CloseRecoverStaminaPromptAndGoHome"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Sweep",
+                "roi": [
+                    850,
+                    614,
+                    123,
+                    61
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "ClickSweepForStolenTreasureAgain": {
+        "next": [
+            "NoStolenTreasureKeysLeft",
+            "[JumpBack]StolenTreasure_RefillStamina",
+            "[JumpBack]StolenTreasure_RefillStaminaText",
+            "[JumpBack]StolenTreasure_RefillStaminaWideText",
+            "ClickSweepForStolenTreasureAgain",
+            "CloseRecoverStaminaPromptAndGoHome"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "SweepAgain",
+                    "Sweep Again",
+                    "Sweep"
+                ],
+                "roi": [
+                    675,
+                    538,
+                    151,
+                    83
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "NoStolenTreasureKeysLeft": {
+        "next": [
+            "ClickBackButtonImageUntilHome"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "Insufficienttreasurekeys!",
+                    "Insufficient treasure keys!",
+                    "Insufficient Treasure Keys",
+                    "Insufficient",
+                    "treasure keys"
+                ],
+                "roi": [
+                    392,
+                    301,
+                    478,
+                    118
+                ]
+            }
+        }
+    },
+    "StolenTreasure_RefillStamina": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "StolenTreasure_DismissBurgerUsed"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "timerift/RecoverStaminaScreen.png",
+                "threshold": 0.6,
+                "roi": [
+                    440,
+                    170,
+                    156,
+                    167
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    871,
+                    228,
+                    56,
+                    40
+                ]
+            }
+        }
+    },
+    "StolenTreasure_RefillStaminaText": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "StolenTreasure_DismissBurgerUsed"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "RecoverStamina",
+                    "Recover Stamina",
+                    "Recover",
+                    "Stamina",
+                    "Stmina"
+                ],
+                "roi": [
+                    501,
+                    168,
+                    282,
+                    62
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    871,
+                    228,
+                    56,
+                    40
+                ]
+            }
+        }
+    },
+    "StolenTreasure_RefillStaminaWideText": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "StolenTreasure_DismissBurgerUsed"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "RecoverStamina",
+                    "Recover Stamina",
+                    "Recover",
+                    "Stamina",
+                    "Stmina"
+                ],
+                "roi": [
+                    350,
+                    120,
+                    600,
+                    260
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    871,
+                    228,
+                    56,
+                    40
+                ]
+            }
+        }
+    },
+    "StolenTreasure_DismissBurgerUsed": {
+        "post_wait_freezes": 500,
+        "next": [],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "timerift/BurgerUsed.png",
+                "roi": [
+                    609,
+                    334,
+                    63,
+                    56
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    819,
+                    67,
+                    148,
+                    28
+                ]
+            }
+        }
+    }
+}

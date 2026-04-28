@@ -1,0 +1,123 @@
+{
+    "FloatingRealm": {
+        "next": [
+            "EnterFloatingCity"
+        ]
+    },
+    "EnterFloatingCity": {
+        "next": [
+            "ClickFloatingRealm"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "mainscreen/FloatingCityIcon.png",
+                "roi": [
+                    18,
+                    596,
+                    101,
+                    83
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "ClickFloatingRealm": {
+        "next": [
+            "QuickClaim"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "floating_realm/FloatingRealm.png",
+                "roi": [
+                    1186,
+                    429,
+                    68,
+                    92
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "QuickClaim": {
+        "next": [
+            "ClaimCollected"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "Quick",
+                    "Quick Claim",
+                    "Claim"
+                ],
+                "roi": [
+                    1158,
+                    454,
+                    103,
+                    100
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "ClaimCollected": {
+        "next": [
+            "AnotherClick"
+        ],
+        "pre_delay": 2000,
+        "post_delay": 2000,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "floating_realm/ItemClaimed.png",
+                "roi": [
+                    420,
+                    124,
+                    441,
+                    148
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1234,
+                    357,
+                    25,
+                    64
+                ]
+            }
+        }
+    },
+    "AnotherClick": {
+        "next": [
+            "EnterWorld",
+            "[JumpBack]ClickBackButtonImage"
+        ],
+        "pre_delay": 1500,
+        "post_delay": 2000,
+        "recognition": {
+            "type": "DirectHit"
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1234,
+                    357,
+                    25,
+                    64
+                ]
+            }
+        }
+    }
+}

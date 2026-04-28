@@ -1,0 +1,1017 @@
+{
+    "ClickWaysOftheLaws": {
+        "next": [
+            "SelectWaysOfTheLawsStageAxe"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/WaysOfTheLaws.png",
+                "roi": [
+                    674,
+                    439,
+                    86,
+                    56
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "ClickSweepIconForWaysOfTheLaws": {
+        "next": [
+            "ConfirmSweepForWaysOfTheLaws",
+            "ClickBackButtonImageUntilHome"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/SweepIcon.png",
+                "roi": [
+                    905,
+                    547,
+                    99,
+                    101
+                ],
+                "threshold": 0.6
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "ConfirmSweepForWaysOfTheLaws": {
+        "next": [
+            "ConfirmSweepForWaysOfTheLaws2",
+            "[JumpBack]WaysOfTheLaws_RefillStamina",
+            "[JumpBack]WaysOfTheLaws_RefillStaminaText",
+            "[JumpBack]WaysOfTheLaws_RefillStaminaWideText",
+            "ConfirmSweepForWaysOfTheLaws",
+            "ClickBackButtonImageUntilHome"
+        ],
+        "pre_wait_freezes": 1000,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "sweep_screen_icon.png",
+                "roi": [
+                    563,
+                    241,
+                    134,
+                    137
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    842,
+                    606,
+                    86,
+                    29
+                ]
+            }
+        }
+    },
+    "ConfirmSweepForWaysOfTheLaws2": {
+        "next": [
+            "ClickSweepAgainForWaysOfTheLaws",
+            "ClickBackButtonImageUntilHome"
+        ],
+        "pre_wait_freezes": 1000,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Confirm",
+                "roi": [
+                    688,
+                    428,
+                    140,
+                    57
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "ClickSweepAgainForWaysOfTheLaws": {
+        "next": [
+            "ClickBackButtonImageUntilHome"
+        ],
+        "pre_wait_freezes": 1000,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "SweepAgain",
+                    "Sweep Again",
+                    "Sweep"
+                ],
+                "roi": [
+                    686,
+                    553,
+                    125,
+                    56
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "SelectWaysOfTheLawsStageSpear": {
+        "post_wait_freezes": 500,
+        "next": [
+            "AfterSelectWaysOfTheLawsStage"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/SweepIcon.png",
+                "roi": [
+                    905,
+                    547,
+                    99,
+                    101
+                ],
+                "threshold": 0.6
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    60,
+                    119,
+                    241,
+                    45
+                ]
+            }
+        }
+    },
+    "SelectWaysOfTheLawsStageAxe": {
+        "post_wait_freezes": 500,
+        "next": [
+            "AfterSelectWaysOfTheLawsStage"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/SweepIcon.png",
+                "roi": [
+                    905,
+                    547,
+                    99,
+                    101
+                ],
+                "threshold": 0.6
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    51,
+                    223,
+                    210,
+                    52
+                ]
+            }
+        }
+    },
+    "SelectWaysOfTheLawsStageSword": {
+        "post_wait_freezes": 500,
+        "next": [
+            "AfterSelectWaysOfTheLawsStage"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/SweepIcon.png",
+                "roi": [
+                    905,
+                    547,
+                    99,
+                    101
+                ],
+                "threshold": 0.6
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    97,
+                    350,
+                    146,
+                    44
+                ]
+            }
+        }
+    },
+    "SelectWaysOfTheLawsStageKnife": {
+        "post_wait_freezes": 500,
+        "next": [
+            "AfterSelectWaysOfTheLawsStage"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/SweepIcon.png",
+                "roi": [
+                    905,
+                    547,
+                    99,
+                    101
+                ],
+                "threshold": 0.6
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    127,
+                    463,
+                    156,
+                    55
+                ]
+            }
+        }
+    },
+    "SelectWaysOfTheLawsStageHammer": {
+        "post_wait_freezes": 500,
+        "next": [
+            "AfterSelectWaysOfTheLawsStage"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/SweepIcon.png",
+                "roi": [
+                    905,
+                    547,
+                    99,
+                    101
+                ],
+                "threshold": 0.6
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    73,
+                    575,
+                    191,
+                    53
+                ]
+            }
+        }
+    },
+    "SelectWaysOfTheLawsStageBow": {
+        "post_wait_freezes": 500,
+        "next": [
+            "AfterSelectWaysOfTheLawsStage"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/SweepIcon.png",
+                "roi": [
+                    905,
+                    547,
+                    99,
+                    101
+                ],
+                "threshold": 0.6
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    75,
+                    681,
+                    132,
+                    21
+                ]
+            }
+        }
+    },
+    "SelectWaysOfTheLawsStageStaff": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "SelectWaysOfTheLawsStageStaffAfterScroll"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/SweepIcon.png",
+                "roi": [
+                    905,
+                    547,
+                    99,
+                    101
+                ],
+                "threshold": 0.6
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "duration": 500,
+                "begin": [
+                    125,
+                    634,
+                    146,
+                    66
+                ],
+                "end": [
+                    125,
+                    360,
+                    146,
+                    66
+                ]
+            }
+        }
+    },
+    "SelectWaysOfTheLawsStageStaffAfterScroll": {
+        "post_wait_freezes": 500,
+        "next": [
+            "AfterSelectWaysOfTheLawsStage"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/SweepIcon.png",
+                "roi": [
+                    905,
+                    547,
+                    99,
+                    101
+                ],
+                "threshold": 0.6
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    98,
+                    364,
+                    189,
+                    24
+                ]
+            }
+        }
+    },
+    "SelectWaysOfTheLawsStageHeavyArmor": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "SelectWaysOfTheLawsStageHeavyArmorAfterScroll"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/SweepIcon.png",
+                "roi": [
+                    905,
+                    547,
+                    99,
+                    101
+                ],
+                "threshold": 0.6
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "duration": 500,
+                "begin": [
+                    125,
+                    634,
+                    146,
+                    66
+                ],
+                "end": [
+                    125,
+                    360,
+                    146,
+                    66
+                ]
+            }
+        }
+    },
+    "SelectWaysOfTheLawsStageHeavyArmorAfterScroll": {
+        "post_wait_freezes": 500,
+        "next": [
+            "AfterSelectWaysOfTheLawsStage"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/SweepIcon.png",
+                "roi": [
+                    905,
+                    547,
+                    99,
+                    101
+                ],
+                "threshold": 0.6
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    113,
+                    469,
+                    160,
+                    39
+                ]
+            }
+        }
+    },
+    "SelectWaysOfTheLawsStageLightArmor": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "SelectWaysOfTheLawsStageLightArmorAfterScroll"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/SweepIcon.png",
+                "roi": [
+                    905,
+                    547,
+                    99,
+                    101
+                ],
+                "threshold": 0.6
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "duration": 500,
+                "begin": [
+                    125,
+                    634,
+                    146,
+                    66
+                ],
+                "end": [
+                    125,
+                    360,
+                    146,
+                    66
+                ]
+            }
+        }
+    },
+    "SelectWaysOfTheLawsStageLightArmorAfterScroll": {
+        "post_wait_freezes": 500,
+        "next": [
+            "AfterSelectWaysOfTheLawsStage"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/SweepIcon.png",
+                "roi": [
+                    905,
+                    547,
+                    99,
+                    101
+                ],
+                "threshold": 0.6
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    91,
+                    582,
+                    182,
+                    43
+                ]
+            }
+        }
+    },
+    "SelectWaysOfTheLawsStageClothArmor": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "SelectWaysOfTheLawsStageClothArmorAfterScroll"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/SweepIcon.png",
+                "roi": [
+                    905,
+                    547,
+                    99,
+                    101
+                ],
+                "threshold": 0.6
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "duration": 500,
+                "begin": [
+                    125,
+                    634,
+                    146,
+                    66
+                ],
+                "end": [
+                    125,
+                    360,
+                    146,
+                    66
+                ]
+            }
+        }
+    },
+    "SelectWaysOfTheLawsStageClothArmorAfterScroll": {
+        "post_wait_freezes": 500,
+        "next": [
+            "AfterSelectWaysOfTheLawsStage"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/SweepIcon.png",
+                "roi": [
+                    905,
+                    547,
+                    99,
+                    101
+                ],
+                "threshold": 0.6
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    112,
+                    695,
+                    150,
+                    13
+                ]
+            }
+        }
+    },
+    "SelectWaysOfTheLawsStageHeavyHelm": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "SelectWaysOfTheLawsStageHeavyHelmSecondScroll"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/SweepIcon.png",
+                "roi": [
+                    905,
+                    547,
+                    99,
+                    101
+                ],
+                "threshold": 0.6
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "duration": 500,
+                "begin": [
+                    125,
+                    634,
+                    146,
+                    66
+                ],
+                "end": [
+                    125,
+                    360,
+                    146,
+                    66
+                ]
+            }
+        }
+    },
+    "SelectWaysOfTheLawsStageHeavyHelmSecondScroll": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "SelectWaysOfTheLawsStageHeavyHelmAfterScroll"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/SweepIcon.png",
+                "roi": [
+                    905,
+                    547,
+                    99,
+                    101
+                ],
+                "threshold": 0.6
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "duration": 500,
+                "begin": [
+                    125,
+                    634,
+                    146,
+                    66
+                ],
+                "end": [
+                    125,
+                    360,
+                    146,
+                    66
+                ]
+            }
+        }
+    },
+    "SelectWaysOfTheLawsStageHeavyHelmAfterScroll": {
+        "post_wait_freezes": 500,
+        "next": [
+            "AfterSelectWaysOfTheLawsStage"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/SweepIcon.png",
+                "roi": [
+                    905,
+                    547,
+                    99,
+                    101
+                ],
+                "threshold": 0.6
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    127,
+                    411,
+                    171,
+                    29
+                ]
+            }
+        }
+    },
+    "SelectWaysOfTheLawsStageLightHelm": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "SelectWaysOfTheLawsStageLightHelmSecondScroll"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/SweepIcon.png",
+                "roi": [
+                    905,
+                    547,
+                    99,
+                    101
+                ],
+                "threshold": 0.6
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "duration": 500,
+                "begin": [
+                    125,
+                    634,
+                    146,
+                    66
+                ],
+                "end": [
+                    125,
+                    360,
+                    146,
+                    66
+                ]
+            }
+        }
+    },
+    "SelectWaysOfTheLawsStageLightHelmSecondScroll": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "SelectWaysOfTheLawsStageLightHelmAfterScroll"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/SweepIcon.png",
+                "roi": [
+                    905,
+                    547,
+                    99,
+                    101
+                ],
+                "threshold": 0.6
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "duration": 500,
+                "begin": [
+                    125,
+                    634,
+                    146,
+                    66
+                ],
+                "end": [
+                    125,
+                    360,
+                    146,
+                    66
+                ]
+            }
+        }
+    },
+    "SelectWaysOfTheLawsStageLightHelmAfterScroll": {
+        "post_wait_freezes": 500,
+        "next": [
+            "AfterSelectWaysOfTheLawsStage"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/SweepIcon.png",
+                "roi": [
+                    905,
+                    547,
+                    99,
+                    101
+                ],
+                "threshold": 0.6
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    98,
+                    514,
+                    191,
+                    29
+                ]
+            }
+        }
+    },
+    "SelectWaysOfTheLawsStageClothHelm": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "SelectWaysOfTheLawsStageClothHelmSecondScroll"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/SweepIcon.png",
+                "roi": [
+                    905,
+                    547,
+                    99,
+                    101
+                ],
+                "threshold": 0.6
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "duration": 500,
+                "begin": [
+                    125,
+                    634,
+                    146,
+                    66
+                ],
+                "end": [
+                    125,
+                    360,
+                    146,
+                    66
+                ]
+            }
+        }
+    },
+    "SelectWaysOfTheLawsStageClothHelmSecondScroll": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "SelectWaysOfTheLawsStageClothHelmAfterScroll"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/SweepIcon.png",
+                "roi": [
+                    905,
+                    547,
+                    99,
+                    101
+                ],
+                "threshold": 0.6
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "duration": 500,
+                "begin": [
+                    125,
+                    634,
+                    146,
+                    66
+                ],
+                "end": [
+                    125,
+                    360,
+                    146,
+                    66
+                ]
+            }
+        }
+    },
+    "SelectWaysOfTheLawsStageClothHelmAfterScroll": {
+        "post_wait_freezes": 500,
+        "next": [
+            "AfterSelectWaysOfTheLawsStage"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/SweepIcon.png",
+                "roi": [
+                    905,
+                    547,
+                    99,
+                    101
+                ],
+                "threshold": 0.6
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    137,
+                    632,
+                    111,
+                    32
+                ]
+            }
+        }
+    },
+    "AfterSelectWaysOfTheLawsStage": {
+        "next": [
+            "ClickSweepIconForWaysOfTheLaws"
+        ]
+    },
+    "WaysOfTheLaws_RefillStamina": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "WaysOfTheLaws_DismissBurgerUsed"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "timerift/RecoverStaminaScreen.png",
+                "threshold": 0.6,
+                "roi": [
+                    440,
+                    170,
+                    156,
+                    167
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    871,
+                    228,
+                    56,
+                    40
+                ]
+            }
+        }
+    },
+    "WaysOfTheLaws_RefillStaminaText": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "WaysOfTheLaws_DismissBurgerUsed"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "RecoverStamina",
+                    "Recover Stamina",
+                    "Recover",
+                    "Stamina",
+                    "Stmina"
+                ],
+                "roi": [
+                    501,
+                    168,
+                    282,
+                    62
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    871,
+                    228,
+                    56,
+                    40
+                ]
+            }
+        }
+    },
+    "WaysOfTheLaws_RefillStaminaWideText": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "WaysOfTheLaws_DismissBurgerUsed"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "RecoverStamina",
+                    "Recover Stamina",
+                    "Recover",
+                    "Stamina",
+                    "Stmina"
+                ],
+                "roi": [
+                    350,
+                    120,
+                    600,
+                    260
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    871,
+                    228,
+                    56,
+                    40
+                ]
+            }
+        }
+    },
+    "WaysOfTheLaws_DismissBurgerUsed": {
+        "post_wait_freezes": 500,
+        "next": [],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "timerift/BurgerUsed.png",
+                "roi": [
+                    609,
+                    334,
+                    63,
+                    56
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    819,
+                    67,
+                    148,
+                    28
+                ]
+            }
+        }
+    }
+}

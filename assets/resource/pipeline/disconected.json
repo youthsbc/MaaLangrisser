@@ -1,0 +1,25 @@
+{
+    "Disconnected": {
+        "next": [
+            "ConfirmDisconnected"
+        ]
+    },
+    "ConfirmDisconnected": {
+        "next": "Start",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Confirm",
+                "roi": [
+                    585,
+                    437,
+                    101,
+                    37
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    }
+}

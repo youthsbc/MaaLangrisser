@@ -1,0 +1,74 @@
+{
+    "ClickRagnorakOfTheRealms": {
+        "next": [
+            "ClickRelicsOfTheGods"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "TWISTED",
+                    "TWSTED"
+                ],
+                "roi": [
+                    383,
+                    89,
+                    289,
+                    121
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    464,
+                    468,
+                    188,
+                    76
+                ]
+            }
+        }
+    },
+    "ClickRelicsOfTheGods": {
+        "next": [
+            "ClaimRelicsOfTheGods",
+            "ClickBackButtonImageUntilHome"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/RelicsOfTheGods.png",
+                "roi": [
+                    1186,
+                    622,
+                    86,
+                    43
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "ClaimRelicsOfTheGods": {
+        "next": [
+            "ClickBackButtonImageUntilHome"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Claim",
+                "roi": [
+                    471,
+                    448,
+                    116,
+                    64
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    }
+}

@@ -1,11 +1,9 @@
 name: install
 
 env:
-  # 版本控制：
-  # - 设置 VERSION 为空字符串时，下载 latest 版本
-  # - 设置 VERSION 为具体版本号时（如 v1.2.3），下载指定版本
+  # Leave empty to use the latest release discovered from GitHub.
   MAAFW_VERSION: ""
-  MFAA_VERSION: ""
+  MXU_VERSION: ""
 
 on:
   push:
@@ -16,15 +14,21 @@ on:
     paths:
       - ".github/workflows/install.yml"
       - "assets/**"
-      - "**.py"
+      - "agent/**"
+      - "tools/**"
   pull_request:
     branches:
       - "**"
     paths:
       - ".github/workflows/install.yml"
       - "assets/**"
-      - "**.py"
+      - "agent/**"
+      - "tools/**"
   workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: read
 
 jobs:
   meta:
@@ -33,9 +37,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
       - id: set_tag
         run: |
-          # 检查标签格式
           is_release=${{ startsWith(github.ref, 'refs/tags/v') }}
           tag=$(git describe --tags --match "v*" ${{ github.ref }} || true)
           if [[ $tag != v* ]]; then
@@ -46,13 +50,12 @@ jobs:
             tag=$(date "+$tag-%y%m%d-$(git rev-parse --short HEAD)")
           fi
 
-          if ! $($is_release) ; then
+          if [[ "$is_release" != "true" ]]; then
             prefix=${tag%-*-*}
             suffix=${tag#$prefix-}
             tag="$prefix-ci.$suffix"
           fi
 
-          # 检查是否为预发布版本
           is_prerelease=false
           if [[ $tag =~ .*alpha.* || $tag =~ .*beta.* || $tag =~ .*rc.* || $tag =~ .*dev.* || $tag =~ .*-ci.* ]]; then
             is_prerelease=true
@@ -62,19 +65,55 @@ jobs:
           echo tag=$tag | tee -a $GITHUB_OUTPUT
           echo is_release=$is_release | tee -a $GITHUB_OUTPUT
           echo is_prerelease=$is_prerelease | tee -a $GITHUB_OUTPUT
+
+      - id: maafw-latest-release
+        if: env.MAAFW_VERSION == ''
+        uses: pozetroninc/github-action-get-latest-release@master
+        with:
+          repository: MaaXYZ/MaaFramework
+          excludes: draft
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - id: mxu-latest-release
+        if: env.MXU_VERSION == ''
+        uses: pozetroninc/github-action-get-latest-release@master
+        with:
+          repository: MistEO/MXU
+          excludes: ${{ (steps.set_tag.outputs.is_release == 'true' && steps.set_tag.outputs.is_prerelease == 'false') && 'prerelease, draft' || 'draft' }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - id: resolve_versions
+        run: |
+          maafw_version="${MAAFW_VERSION:-${{ steps.maafw-latest-release.outputs.release }}}"
+          mxu_version="${MXU_VERSION:-${{ steps.mxu-latest-release.outputs.release }}}"
+
+          echo maafw_version=$maafw_version | tee -a $GITHUB_OUTPUT
+          echo mxu_version=$mxu_version | tee -a $GITHUB_OUTPUT
+
     outputs:
       tag: ${{ steps.set_tag.outputs.tag }}
       is_release: ${{ steps.set_tag.outputs.is_release }}
       is_prerelease: ${{ steps.set_tag.outputs.is_prerelease }}
+      maafw_version: ${{ steps.resolve_versions.outputs.maafw_version }}
+      mxu_version: ${{ steps.resolve_versions.outputs.mxu_version }}
 
-  install:
+  build_and_install:
     needs: meta
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os == 'win' && 'windows-latest' || (matrix.os == 'macos' && 'macos-latest' || 'ubuntu-latest') }}
     strategy:
-      matrix:
-        os: [win, macos, linux, android]
-        arch: [aarch64, x86_64]
       fail-fast: false
+      matrix:
+        include:
+          - os: win
+            arch: x86_64
+          - os: win
+            arch: aarch64
+          - os: macos
+            arch: x86_64
+          - os: macos
+            arch: aarch64
+          - os: linux
+            arch: x86_64
 
     steps:
       - uses: actions/checkout@v4
@@ -86,53 +125,41 @@ jobs:
         with:
           repository: MaaXYZ/MaaFramework
           fileName: "MAA-${{ matrix.os }}-${{ matrix.arch }}*"
-          latest: ${{ env.MAAFW_VERSION == '' }}
-          tag: ${{ env.MAAFW_VERSION }}
+          tag: ${{ needs.meta.outputs.maafw_version }}
           out-file-path: "deps"
           extract: true
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Download MFAAvalonia
-        if: matrix.os != 'android'
-        id: download_mfa
+      - name: Download MXU
         uses: robinraju/release-downloader@v1
         with:
-          repository: SweetSmellFox/MFAAvalonia
-          fileName: "MFAAvalonia-*-${{ (matrix.os == 'win' && 'win') || (matrix.os == 'macos' && 'osx') || (matrix.os == 'linux' && 'linux') }}-${{ (matrix.arch == 'x86_64' && 'x64') || (matrix.arch == 'aarch64' && 'arm64') }}*"
-          latest: ${{ env.MFAA_VERSION == '' }}
-          tag: ${{ env.MFAA_VERSION }}
-          out-file-path: "MFA"
+          repository: MistEO/MXU
+          fileName: "MXU-${{ matrix.os }}-${{ matrix.arch }}-*"
+          tag: ${{ needs.meta.outputs.mxu_version }}
+          out-file-path: "downloads/MXU"
           extract: true
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Clean up MFAAvalonia archive
-        if: matrix.os != 'android'
+      - name: Prepare MXU executable
         shell: bash
         run: |
-          ARCHIVE_FILE_PATH="${{ fromJson(steps.download_mfa.outputs.downloaded_files)[0] }}"
-          rm -f "${ARCHIVE_FILE_PATH}"
-          echo "Archive cleanup command executed for MFAAvalonia."
+          mxu_binary="$(find downloads/MXU -type f \( -iname 'mxu.exe' -o -name 'mxu' \) | head -n 1)"
+          if [[ -z "$mxu_binary" ]]; then
+            echo "MXU executable was not found in the downloaded archive."
+            find downloads/MXU -maxdepth 3 -type f
+            exit 1
+          fi
 
-      - name: Remove built-in runtime in MFA
-        if: matrix.os != 'android'
-        shell: bash
-        run: |
-          rm -rf MFA/runtimes
-      
+          if [[ "${{ matrix.os }}" == "win" ]]; then
+            cp "$mxu_binary" ./mxu.exe
+          else
+            cp "$mxu_binary" ./mxu
+            chmod +x ./mxu
+          fi
+
       - name: Install
         shell: bash
         run: |
-          if [[ "${{ matrix.os }}" != "android" ]]; then
-            if [ -d "MFA" ]; then
-              echo "Copying MFA files to install directory..."
-              mkdir -p install
-              rsync -av --ignore-existing MFA/ install/
-              echo "MFA files copied successfully."
-            else
-              echo "MFA directory not found, skipping copy."
-            fi
-          else
-            echo "Skipping copy MFA for Android."
-          fi
-
           cd tools/
           python -m pip install -r ./requirements.txt
           python ./install.py ${{ needs.meta.outputs.tag }} ${{ matrix.os }} ${{ matrix.arch }}
@@ -140,8 +167,133 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: MaaXXX-${{ matrix.os }}-${{ matrix.arch }}
-          path: "install"
+          name: MaaLangrisser-${{ matrix.os }}-${{ matrix.arch }}-intermediate
+          path: install
+
+  package_linux_tarball:
+    needs: [meta, build_and_install]
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        arch: [x86_64]
+
+    steps:
+      - name: Download Linux artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: MaaLangrisser-linux-${{ matrix.arch }}-intermediate
+          path: install
+
+      - name: Repackage as tar.gz
+        shell: bash
+        run: |
+          chmod +x install/MaaLangrisser || true
+          find install/maafw -type f -name "Maa*" ! -name "*.so" -exec chmod +x {} \; || true
+          cd install
+          tar -czvf ../MaaLangrisser-linux-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}.tar.gz .
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: MaaLangrisser-linux-${{ matrix.arch }}-tarball
+          path: MaaLangrisser-linux-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}.tar.gz
+
+  package_macos_dmg:
+    needs: [meta, build_and_install]
+    runs-on: macos-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        arch: [aarch64, x86_64]
+
+    steps:
+      - name: Download macOS artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: MaaLangrisser-macos-${{ matrix.arch }}-intermediate
+          path: install
+
+      - name: Package DMG
+        shell: bash
+        run: |
+          brew install create-dmg
+
+          app_name="MaaLangrisser.app"
+          mkdir -p "$app_name/Contents/MacOS"
+          mkdir -p "$app_name/Contents/Resources"
+          cp -R install/* "$app_name/Contents/MacOS/"
+
+          full_version="${{ needs.meta.outputs.tag }}"
+          short_version="$(echo "$full_version" | sed -E 's/^v//; s/-.*//')"
+          cat > "$app_name/Contents/Info.plist" <<EOF
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+            <key>CFBundleInfoDictionaryVersion</key>
+            <string>6.0</string>
+            <key>CFBundleExecutable</key>
+            <string>MaaLangrisser</string>
+            <key>CFBundleIdentifier</key>
+            <string>com.youthsbc.maalangrisser</string>
+            <key>CFBundleName</key>
+            <string>MaaLangrisser</string>
+            <key>CFBundlePackageType</key>
+            <string>APPL</string>
+            <key>CFBundleShortVersionString</key>
+            <string>$short_version</string>
+            <key>CFBundleVersion</key>
+            <string>$full_version</string>
+            <key>LSMinimumSystemVersion</key>
+            <string>10.13</string>
+          </dict>
+          </plist>
+          EOF
+
+          chmod +x "$app_name/Contents/MacOS/MaaLangrisser"
+          find "$app_name/Contents/MacOS/maafw" -type f -name "Maa*" ! -name "*.dylib" -exec chmod +x {} \; || true
+          codesign --force --deep --sign - "$app_name"
+
+          create-dmg \
+            --volname "MaaLangrisser Installer" \
+            --window-pos 200 120 \
+            --window-size 800 400 \
+            --icon-size 100 \
+            --icon "$app_name" 200 190 \
+            --hide-extension "$app_name" \
+            --app-drop-link 600 185 \
+            "MaaLangrisser-macos-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}.dmg" \
+            "$app_name"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: MaaLangrisser-macos-${{ matrix.arch }}-dmg
+          path: MaaLangrisser-macos-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}.dmg
+
+  package_win_zip:
+    needs: [meta, build_and_install]
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        arch: [aarch64, x86_64]
+
+    steps:
+      - name: Download Windows artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: MaaLangrisser-win-${{ matrix.arch }}-intermediate
+          path: install
+
+      - name: Package ZIP
+        shell: pwsh
+        run: |
+          Compress-Archive -Path install/* -DestinationPath MaaLangrisser-win-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}.zip
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: MaaLangrisser-win-${{ matrix.arch }}-zip
+          path: MaaLangrisser-win-${{ matrix.arch }}-${{ needs.meta.outputs.tag }}.zip
 
   changelog:
     name: Generate changelog
@@ -160,44 +312,56 @@ jobs:
         id: git-cliff
         with:
           config: .github/cliff.toml
-          # 正式版：使用 tag-pattern 只匹配正式版标签，包含所有从上一个正式版以来的提交
-          # 预发布版：正常生成，只包含从上一个标签以来的提交
           args: >-
             -vv --latest --strip header
             ${{ needs.meta.outputs.is_prerelease == 'false' && '--tag-pattern "^v[0-9]+\\.[0-9]+\\.[0-9]+$"' || '' }}
         env:
           OUTPUT: CHANGES.md
           GITHUB_REPO: ${{ github.repository }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   release:
     if: ${{ needs.meta.outputs.is_release == 'true' }}
-    needs: [meta, install, changelog]
+    needs:
+      - meta
+      - package_linux_tarball
+      - package_macos_dmg
+      - package_win_zip
+      - changelog
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
         with:
-          path: assets
+          pattern: MaaLangrisser-*-zip
+          path: artifacts
 
-      - run: |
-          cd assets
-          for f in *; do
-            (cd $f && zip -r ../$f-${{ needs.meta.outputs.tag }}.zip .)
-          done
-          
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: MaaLangrisser-*-tarball
+          path: artifacts
+
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: MaaLangrisser-*-dmg
+          path: artifacts
+
+      - name: Prepare release artifacts
+        shell: bash
+        run: |
+          find artifacts -mindepth 2 -type f -exec mv {} artifacts/ \;
+          find artifacts -mindepth 1 -type d -empty -delete
+          ls -la artifacts
+
       - uses: softprops/action-gh-release@v2
         with:
-          files: assets/*
+          files: artifacts/*
           tag_name: ${{ needs.meta.outputs.tag }}
           body: ${{ needs.changelog.outputs.release_body }}
           draft: false
           prerelease: ${{ needs.meta.outputs.is_prerelease == 'true' }}
 
-        # Mirror酱为第三方分发服务，新项目默认关闭
-        # 若有需要请联系 Mirror酱 开通，直接自行开启是无法使用的
-        # https://mirrorchyan.com/
       - name: Trigger MirrorChyanUploading
         if: false
-        # if: ${{ github.repository_owner == 'MaaXYZ' }}
         shell: bash
         run: |
           gh workflow run --repo $GITHUB_REPOSITORY mirrorchyan_release.yml -f tag=${{ needs.meta.outputs.tag }}

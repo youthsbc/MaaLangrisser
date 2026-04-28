@@ -1,105 +1,593 @@
 {
-    // 本文件主要定义了通用 UI 的行为和显示内容
-    // 可参考文档和示例添加更多您需要的功能
-    // 文档：https://maafw.xyz/docs/3.3-ProjectInterfaceV2
-    // 示例：https://github.com/MaaXYZ/MaaFramework/blob/main/sample/interface.json
     "interface_version": 2,
-    "name": "MaaXXX",
-    "description": "这是一个使用 MaaFramework 创建的新项目。",
-    "contact": "QQ群: 123456789",
+    "languages": {
+        "zh_cn": "interface_zh.json",
+        "en_us": "interface_en.json"
+    },
+    "name": "MaaLangrisser",
     "license": "MIT",
-    "welcome": "首次使用！欢迎使用 MAA!",
-    // 填写项目地址和版本号可实现自动更新功能
-    "github": "https://github.com/MaaXYZ/MaaPracticeBoilerplate",
-    "version": "1.0.0",
-    // Mirror酱为第三方分发服务，新项目默认关闭
-    // 若有需要请联系 Mirror酱 开通，直接自行开启是无法使用的
-    // "mirrorchyan_rid": "MaaXXX",
-    // "mirrorchyan_multiplatform": true,
+    "github": "https://github.com/youthsbc/MaaLangrisser/",
+    "version": "0.0.1",
+    "welcome": "MaaLangrisser",
     "controller": [
         {
-            "name": "安卓端",
-            "type": "Adb",
-            "display_short_side": 720 // 默认缩放分辨率的短边长度
-        },
-        {
-            "name": "桌面端",
-            "type": "Win32",
-            "win32": {
-                "class_regex": ".*",
-                "window_regex": "Visual Studio",
-                // 截图及控制方式，请根据项目实际情况修改
-                // 文档: https://maafw.xyz/docs/2.4-ControlMethods
-                "screencap": "PrintWindow", // 截图方式
-                "mouse": "PostMessageWithCursorPos", // 鼠标控制方式
-                "keyboard": "PostMessageWithCursorPos" // 键盘控制方式
-            }
+            "name": "Android emulator",
+            "label": "Mumu",
+            "type": "Adb"
         }
     ],
     "resource": [
         {
-            "name": "官服",
+            "name": "Global Server - English",
             "path": [
-                "./resource"
-            ]
-        },
-        {
-            "name": "B 服",
-            "path": [
-                "./resource"
-                // "./resource_bilibili"
+                "./assets/resource"
             ]
         }
     ],
-    // 可选的 agent 示例
-    // "agent": {
-    //     "child_exec": "python",
-    //     "child_args": [
-    //         "./agent/main.py"
-    //     ]
-    // },
     "task": [
         {
-            "name": "普通任务",
-            "entry": "MyTask1"
+            "name": "Start Game - Go into World",
+            "entry": "Start"
         },
         {
-            "name": "选项任务",
-            "entry": "MyTask2",
+            "name": "Floating Realm",
+            "entry": "FloatingRealm"
+        },
+        {
+            "name": "Bonds - Sweep shards of top 3 characters",
+            "entry": "Bonds"
+        },
+        {
+            "name": "Time Rift - Sweep",
+            "entry": "TimeRift",
             "option": [
-                "任务选项1"
+                "TimeRiftStage"
             ]
         },
         {
-            "name": "参数任务",
-            "entry": "MyTask3",
-            "option": [
-                "任务选项1"
-            ],
-            "pipeline_override": {}
+            "name": "Arena - Do 5 daily battles",
+            "entry": "Arena"
         },
         {
-            "name": "带Custom的任务",
-            "entry": "MyTask4"
+            "name": "Summon - Friendship Voucher",
+            "entry": "Summon"
+        },
+        {
+            "name": "Mail - Claim mail items",
+            "entry": "Mail"
+        },
+        {
+            "name": "Friend - Give/Claim Friendship points",
+            "entry": "Friend"
+        },
+        {
+            "name": "World Event - Clear world events (crystal/gold/equipment)",
+            "entry": "WorldEvent"
+        },
+        {
+            "name": "SecretRealm - daily 4",
+            "entry": "DailyFour",
+            "option": [
+                "DailyFourAnikiStage"
+            ]
+        },
+        {
+            "name": "Sweep Ways Of The Laws",
+            "entry": "SweepWaysOftheLaws",
+            "option": [
+                "WaysOfTheLawsStage"
+            ]
+        },
+        {
+            "name": "Sweep Eternal Temple",
+            "entry": "SweepEternalTemple"
+        },
+        {
+            "name": "Mission - Claim daily mission rewards",
+            "entry": "Missions"
+        },
+        {
+            "name": "Claim Weekly Relics Of The Gods",
+            "entry": "ClaimWeeklyRelicsOfTheGods"
+        },
+        {
+            "name": "Sweep Stolen Treasure",
+            "entry": "SweepStolenTreasure"
+        },
+        {
+            "name": "Sweep Timeless Trial",
+            "entry": "SweepTimelessTrial"
+        },
+        {
+            "name": "Manual - Ways Of the Laws",
+            "entry": "ManualWaysOfTheLaws",
+            "option": [
+                "ManualWaysOfTheLawsStage"
+            ]
+        },
+        {
+            "name": "Stop App",
+            "entry": "StopApp"
         }
     ],
     "option": {
-        "任务选项1": {
+        "DailyFourAnikiStage": {
             "type": "select",
+            "label": "Aniki Stage",
+            "description": "Choose which Aniki Gym stage to sweep.",
+            "default_case": "archer",
             "cases": [
                 {
-                    "name": "文本1",
+                    "name": "infantry",
+                    "label": "Infantry / 1st stage",
                     "pipeline_override": {
-                        "OcrTask": {
-                            "text": "文本1"
+                        "AnikiGym": {
+                            "next": [
+                                "SelectAnikiStageInfantry"
+                            ]
                         }
                     }
                 },
                 {
-                    "name": "文本2",
+                    "name": "archer",
+                    "label": "Archer / 2nd stage",
                     "pipeline_override": {
-                        "OcrTask": {
-                            "text": "文本2"
+                        "AnikiGym": {
+                            "next": [
+                                "SelectAnikiStageArcher"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "lancer",
+                    "label": "Lancer",
+                    "pipeline_override": {
+                        "AnikiGym": {
+                            "next": [
+                                "SelectAnikiStageLancer"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "flier",
+                    "label": "Flier",
+                    "pipeline_override": {
+                        "AnikiGym": {
+                            "next": [
+                                "SelectAnikiStageFlier"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "cavalry",
+                    "label": "Cavalry",
+                    "pipeline_override": {
+                        "AnikiGym": {
+                            "next": [
+                                "SelectAnikiStageCavalry"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "holy",
+                    "label": "Holy",
+                    "pipeline_override": {
+                        "AnikiGym": {
+                            "next": [
+                                "SelectAnikiStageHoly"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "TimeRiftStage": {
+            "type": "select",
+            "label": "Time Rift Stage",
+            "description": "Choose which elite Time Rift 13 stage to sweep.",
+            "default_case": "13-5",
+            "cases": [
+                {
+                    "name": "13-5",
+                    "label": "13-5",
+                    "pipeline_override": {
+                        "TimeRift_EliteModeOn": {
+                            "next": [
+                                "TimeRift_SelectStage13_5"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "13-6",
+                    "label": "13-6",
+                    "pipeline_override": {
+                        "TimeRift_EliteModeOn": {
+                            "next": [
+                                "TimeRift_SelectStage13_6"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "13-7",
+                    "label": "13-7",
+                    "pipeline_override": {
+                        "TimeRift_EliteModeOn": {
+                            "next": [
+                                "TimeRift_SelectStage13_7"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "WaysOfTheLawsStage": {
+            "type": "select",
+            "label": "Ways of the Laws Stage",
+            "description": "Choose which Ways of the Laws stage to sweep.",
+            "default_case": "axe",
+            "cases": [
+                {
+                    "name": "spear",
+                    "label": "Spear / 1st stage",
+                    "pipeline_override": {
+                        "ClickWaysOftheLaws": {
+                            "next": [
+                                "SelectWaysOfTheLawsStageSpear"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "axe",
+                    "label": "Axe / 2nd stage",
+                    "pipeline_override": {
+                        "ClickWaysOftheLaws": {
+                            "next": [
+                                "SelectWaysOfTheLawsStageAxe"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "sword",
+                    "label": "Sword",
+                    "pipeline_override": {
+                        "ClickWaysOftheLaws": {
+                            "next": [
+                                "SelectWaysOfTheLawsStageSword"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "knife",
+                    "label": "Knife",
+                    "pipeline_override": {
+                        "ClickWaysOftheLaws": {
+                            "next": [
+                                "SelectWaysOfTheLawsStageKnife"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "hammer",
+                    "label": "Hammer",
+                    "pipeline_override": {
+                        "ClickWaysOftheLaws": {
+                            "next": [
+                                "SelectWaysOfTheLawsStageHammer"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "bow",
+                    "label": "Bow",
+                    "pipeline_override": {
+                        "ClickWaysOftheLaws": {
+                            "next": [
+                                "SelectWaysOfTheLawsStageBow"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "staff",
+                    "label": "Staff",
+                    "pipeline_override": {
+                        "ClickWaysOftheLaws": {
+                            "next": [
+                                "SelectWaysOfTheLawsStageStaff"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "heavy_armor",
+                    "label": "Heavy Armor",
+                    "pipeline_override": {
+                        "ClickWaysOftheLaws": {
+                            "next": [
+                                "SelectWaysOfTheLawsStageHeavyArmor"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "light_armor",
+                    "label": "Light Armor",
+                    "pipeline_override": {
+                        "ClickWaysOftheLaws": {
+                            "next": [
+                                "SelectWaysOfTheLawsStageLightArmor"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "cloth_armor",
+                    "label": "Cloth Armor",
+                    "pipeline_override": {
+                        "ClickWaysOftheLaws": {
+                            "next": [
+                                "SelectWaysOfTheLawsStageClothArmor"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "heavy_helm",
+                    "label": "Heavy Helm",
+                    "pipeline_override": {
+                        "ClickWaysOftheLaws": {
+                            "next": [
+                                "SelectWaysOfTheLawsStageHeavyHelm"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "light_helm",
+                    "label": "Light Helm",
+                    "pipeline_override": {
+                        "ClickWaysOftheLaws": {
+                            "next": [
+                                "SelectWaysOfTheLawsStageLightHelm"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "cloth_helm",
+                    "label": "Cloth Helm",
+                    "pipeline_override": {
+                        "ClickWaysOftheLaws": {
+                            "next": [
+                                "SelectWaysOfTheLawsStageClothHelm"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "ManualWaysOfTheLawsStage": {
+            "type": "select",
+            "label": "Manual Ways of the Laws Stage",
+            "description": "Choose which Ways of the Laws stage to run manually.",
+            "default_case": "axe",
+            "cases": [
+                {
+                    "name": "spear",
+                    "label": "Spear / 1st stage",
+                    "pipeline_override": {
+                        "StartManualWaysOfTheLaws": {
+                            "next": [
+                                "SelectWaysOfTheLawsStageSpear"
+                            ]
+                        },
+                        "AfterSelectWaysOfTheLawsStage": {
+                            "next": [
+                                "WotLClickAttack"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "axe",
+                    "label": "Axe / 2nd stage",
+                    "pipeline_override": {
+                        "StartManualWaysOfTheLaws": {
+                            "next": [
+                                "SelectWaysOfTheLawsStageAxe"
+                            ]
+                        },
+                        "AfterSelectWaysOfTheLawsStage": {
+                            "next": [
+                                "WotLClickAttack"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "sword",
+                    "label": "Sword",
+                    "pipeline_override": {
+                        "StartManualWaysOfTheLaws": {
+                            "next": [
+                                "SelectWaysOfTheLawsStageSword"
+                            ]
+                        },
+                        "AfterSelectWaysOfTheLawsStage": {
+                            "next": [
+                                "WotLClickAttack"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "knife",
+                    "label": "Knife",
+                    "pipeline_override": {
+                        "StartManualWaysOfTheLaws": {
+                            "next": [
+                                "SelectWaysOfTheLawsStageKnife"
+                            ]
+                        },
+                        "AfterSelectWaysOfTheLawsStage": {
+                            "next": [
+                                "WotLClickAttack"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "hammer",
+                    "label": "Hammer",
+                    "pipeline_override": {
+                        "StartManualWaysOfTheLaws": {
+                            "next": [
+                                "SelectWaysOfTheLawsStageHammer"
+                            ]
+                        },
+                        "AfterSelectWaysOfTheLawsStage": {
+                            "next": [
+                                "WotLClickAttack"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "bow",
+                    "label": "Bow",
+                    "pipeline_override": {
+                        "StartManualWaysOfTheLaws": {
+                            "next": [
+                                "SelectWaysOfTheLawsStageBow"
+                            ]
+                        },
+                        "AfterSelectWaysOfTheLawsStage": {
+                            "next": [
+                                "WotLClickAttack"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "staff",
+                    "label": "Staff",
+                    "pipeline_override": {
+                        "StartManualWaysOfTheLaws": {
+                            "next": [
+                                "SelectWaysOfTheLawsStageStaff"
+                            ]
+                        },
+                        "AfterSelectWaysOfTheLawsStage": {
+                            "next": [
+                                "WotLClickAttack"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "heavy_armor",
+                    "label": "Heavy Armor",
+                    "pipeline_override": {
+                        "StartManualWaysOfTheLaws": {
+                            "next": [
+                                "SelectWaysOfTheLawsStageHeavyArmor"
+                            ]
+                        },
+                        "AfterSelectWaysOfTheLawsStage": {
+                            "next": [
+                                "WotLClickAttack"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "light_armor",
+                    "label": "Light Armor",
+                    "pipeline_override": {
+                        "StartManualWaysOfTheLaws": {
+                            "next": [
+                                "SelectWaysOfTheLawsStageLightArmor"
+                            ]
+                        },
+                        "AfterSelectWaysOfTheLawsStage": {
+                            "next": [
+                                "WotLClickAttack"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "cloth_armor",
+                    "label": "Cloth Armor",
+                    "pipeline_override": {
+                        "StartManualWaysOfTheLaws": {
+                            "next": [
+                                "SelectWaysOfTheLawsStageClothArmor"
+                            ]
+                        },
+                        "AfterSelectWaysOfTheLawsStage": {
+                            "next": [
+                                "WotLClickAttack"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "heavy_helm",
+                    "label": "Heavy Helm",
+                    "pipeline_override": {
+                        "StartManualWaysOfTheLaws": {
+                            "next": [
+                                "SelectWaysOfTheLawsStageHeavyHelm"
+                            ]
+                        },
+                        "AfterSelectWaysOfTheLawsStage": {
+                            "next": [
+                                "WotLClickAttack"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "light_helm",
+                    "label": "Light Helm",
+                    "pipeline_override": {
+                        "StartManualWaysOfTheLaws": {
+                            "next": [
+                                "SelectWaysOfTheLawsStageLightHelm"
+                            ]
+                        },
+                        "AfterSelectWaysOfTheLawsStage": {
+                            "next": [
+                                "WotLClickAttack"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "cloth_helm",
+                    "label": "Cloth Helm",
+                    "pipeline_override": {
+                        "StartManualWaysOfTheLaws": {
+                            "next": [
+                                "SelectWaysOfTheLawsStageClothHelm"
+                            ]
+                        },
+                        "AfterSelectWaysOfTheLawsStage": {
+                            "next": [
+                                "WotLClickAttack"
+                            ]
                         }
                     }
                 }

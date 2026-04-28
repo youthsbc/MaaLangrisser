@@ -1,0 +1,1249 @@
+{
+    "DailyFour": {
+        "next": [
+            "AnikiGym",
+            "[JumpBack]OpenSecretRealm",
+            "[JumpBack]ClickDailyEventsTabIfInLimitedTimeEvent",
+            "[JumpBack]ClickDailyEventsTabIfInChallengeEvents"
+        ]
+    },
+    "AnikiGym": {
+        "next": [
+            "SelectAnikiStageArcher"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/AnikiGym.png",
+                "roi": [
+                    872,
+                    91,
+                    54,
+                    62
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "SelectAnikiStageInfantry": {
+        "post_wait_freezes": 500,
+        "next": [
+            "ClickSweepIconForAnikiGym"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/SweepIcon.png",
+                "roi": [
+                    917,
+                    506,
+                    79,
+                    84
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    164,
+                    116,
+                    118,
+                    51
+                ]
+            }
+        }
+    },
+    "SelectAnikiStageArcher": {
+        "post_wait_freezes": 500,
+        "next": [
+            "ClickSweepIconForAnikiGym"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/SweepIcon.png",
+                "roi": [
+                    917,
+                    506,
+                    79,
+                    84
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    151,
+                    219,
+                    174,
+                    39
+                ]
+            }
+        }
+    },
+    "SelectAnikiStageLancer": {
+        "post_wait_freezes": 500,
+        "next": [
+            "ClickSweepIconForAnikiGym"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/SweepIcon.png",
+                "roi": [
+                    917,
+                    506,
+                    79,
+                    84
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    197,
+                    324,
+                    139,
+                    35
+                ]
+            }
+        }
+    },
+    "SelectAnikiStageFlier": {
+        "post_wait_freezes": 500,
+        "next": [
+            "ClickSweepIconForAnikiGym"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/SweepIcon.png",
+                "roi": [
+                    917,
+                    506,
+                    79,
+                    84
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    164,
+                    429,
+                    175,
+                    43
+                ]
+            }
+        }
+    },
+    "SelectAnikiStageCavalry": {
+        "post_wait_freezes": 500,
+        "next": [
+            "ClickSweepIconForAnikiGym"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/SweepIcon.png",
+                "roi": [
+                    917,
+                    506,
+                    79,
+                    84
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    181,
+                    531,
+                    202,
+                    40
+                ]
+            }
+        }
+    },
+    "SelectAnikiStageHoly": {
+        "post_wait_freezes": 500,
+        "next": [
+            "ClickSweepIconForAnikiGym"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/SweepIcon.png",
+                "roi": [
+                    917,
+                    506,
+                    79,
+                    84
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    191,
+                    634,
+                    223,
+                    45
+                ]
+            }
+        }
+    },
+    "ClickSweepIconForAnikiGym": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "ConfirmSweepForAnikiGym",
+            "ConfirmSweepForAnikiGymAlter",
+            "[JumpBack]DailyFour_RefillStamina",
+            "[JumpBack]DailyFour_RefillStaminaText",
+            "[JumpBack]DailyFour_RefillStaminaWideText"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/SweepIcon.png",
+                "roi": [
+                    917,
+                    506,
+                    79,
+                    84
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    944,
+                    540,
+                    16,
+                    21
+                ]
+            }
+        }
+    },
+    "ConfirmSweepForAnikiGym": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "ConfirmSweepForAnikiGym2",
+            "[JumpBack]DailyFour_RefillStamina",
+            "[JumpBack]DailyFour_RefillStaminaText",
+            "[JumpBack]DailyFour_RefillStaminaWideText",
+            "ConfirmSweepForAnikiGym"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Sweep",
+                "roi": [
+                    751,
+                    602,
+                    97,
+                    44
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    764,
+                    606,
+                    77,
+                    34
+                ]
+            }
+        }
+    },
+    "ConfirmSweepForAnikiGymAlter": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "ConfirmSweepForAnikiGym2",
+            "[JumpBack]DailyFour_RefillStamina",
+            "[JumpBack]DailyFour_RefillStaminaText",
+            "[JumpBack]DailyFour_RefillStaminaWideText",
+            "ConfirmSweepForAnikiGymAlter"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Sweep",
+                "roi": [
+                    824,
+                    598,
+                    115,
+                    55
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    833,
+                    605,
+                    98,
+                    36
+                ]
+            }
+        }
+    },
+    "ConfirmSweepForAnikiGym2": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "ClickBackFromAnikiGym1",
+            "[JumpBack]DailyFour_RefillStamina",
+            "[JumpBack]DailyFour_RefillStaminaText",
+            "[JumpBack]DailyFour_RefillStaminaWideText",
+            "ConfirmSweepForAnikiGym2"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Confirm",
+                "roi": [
+                    679,
+                    430,
+                    124,
+                    50
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    688,
+                    437,
+                    107,
+                    36
+                ]
+            }
+        }
+    },
+    "ClickBackFromAnikiGym1": {
+        "pre_delay": 400,
+        "post_wait_freezes": 1500,
+        "next": [
+            "ClickBackFromAnikiGym2"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "common/BackButton.png",
+                "roi": [
+                    47,
+                    14,
+                    62,
+                    50
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "ClickBackFromAnikiGym2": {
+        "post_wait_freezes": 1500,
+        "next": [
+            "ConfirmIsOnSecretRealmScreenAfterAnikiGym"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "HEAM",
+                    "TEAM",
+                    "EAM"
+                ],
+                "roi": [
+                    1157,
+                    638,
+                    95,
+                    47
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    47,
+                    14,
+                    62,
+                    50
+                ]
+            }
+        }
+    },
+    "ConfirmIsOnSecretRealmScreenAfterAnikiGym": {
+        "next": [
+            "GoddessTrial"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "SecretRealm",
+                    "ealm",
+                    "ecret"
+                ],
+                "roi": [
+                    6,
+                    655,
+                    138,
+                    64
+                ]
+            }
+        }
+    },
+    "GoddessTrial": {
+        "next": [
+            "ClickSweepIconForGoddessTrial"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/GoddessTrial.png",
+                "roi": [
+                    833,
+                    453,
+                    87,
+                    60
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "ClickSweepIconForGoddessTrial": {
+        "next": [
+            "ConfirmSweepForGoddessTrial",
+            "ConfirmSweepForGoddessTrialAlter",
+            "[JumpBack]DailyFour_RefillStamina",
+            "[JumpBack]DailyFour_RefillStaminaText",
+            "[JumpBack]DailyFour_RefillStaminaWideText"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/SweepIcon.png",
+                "roi": [
+                    906,
+                    493,
+                    103,
+                    97
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    948,
+                    531,
+                    19,
+                    23
+                ]
+            }
+        }
+    },
+    "ConfirmSweepForGoddessTrial": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "ConfirmSweepForGoddessTrial2",
+            "[JumpBack]DailyFour_RefillStamina",
+            "[JumpBack]DailyFour_RefillStaminaText",
+            "[JumpBack]DailyFour_RefillStaminaWideText",
+            "ConfirmSweepForGoddessTrial"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "Sweep",
+                    "eep"
+                ],
+                "roi": [
+                    761,
+                    600,
+                    85,
+                    46
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    767,
+                    607,
+                    73,
+                    34
+                ]
+            }
+        }
+    },
+    "ConfirmSweepForGoddessTrialAlter": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "ConfirmSweepForGoddessTrial2",
+            "[JumpBack]DailyFour_RefillStamina",
+            "[JumpBack]DailyFour_RefillStaminaText",
+            "[JumpBack]DailyFour_RefillStaminaWideText",
+            "ConfirmSweepForGoddessTrialAlter"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "Sweep",
+                    "eep"
+                ],
+                "roi": [
+                    834,
+                    599,
+                    107,
+                    49
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    839,
+                    606,
+                    93,
+                    36
+                ]
+            }
+        }
+    },
+    "ConfirmSweepForGoddessTrial2": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "ClickBackFromGoddessTrial1",
+            "[JumpBack]DailyFour_RefillStamina",
+            "[JumpBack]DailyFour_RefillStaminaText",
+            "[JumpBack]DailyFour_RefillStaminaWideText",
+            "ConfirmSweepForGoddessTrial2"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Confirm",
+                "roi": [
+                    679,
+                    430,
+                    124,
+                    50
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    688,
+                    437,
+                    107,
+                    36
+                ]
+            }
+        }
+    },
+    "ClickBackFromGoddessTrial1": {
+        "pre_delay": 400,
+        "post_wait_freezes": 1500,
+        "next": [
+            "ClickBackFromGoddessTrial2"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "common/BackButton.png",
+                "roi": [
+                    47,
+                    14,
+                    62,
+                    50
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "ClickBackFromGoddessTrial2": {
+        "post_wait_freezes": 1500,
+        "next": [
+            "ConfirmIsOnSecretRealmScreenAfterGoddessTrial"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "HEAM",
+                    "TEAM",
+                    "EAM"
+                ],
+                "roi": [
+                    1157,
+                    638,
+                    95,
+                    47
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    47,
+                    14,
+                    62,
+                    50
+                ]
+            }
+        }
+    },
+    "ConfirmIsOnSecretRealmScreenAfterGoddessTrial": {
+        "next": [
+            "TrainingSchool"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "SecretRealm",
+                    "ealm",
+                    "ecret"
+                ],
+                "roi": [
+                    6,
+                    655,
+                    138,
+                    64
+                ]
+            }
+        }
+    },
+    "TrainingSchool": {
+        "next": [
+            "ClickSweepIconForTrainingSchool"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/TrainingSchool.png",
+                "roi": [
+                    848,
+                    314,
+                    58,
+                    56
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "ClickSweepIconForTrainingSchool": {
+        "next": [
+            "ConfirmSweepForTrainingSchool",
+            "ConfirmSweepForTrainingSchoolAlter",
+            "[JumpBack]DailyFour_RefillStamina",
+            "[JumpBack]DailyFour_RefillStaminaText",
+            "[JumpBack]DailyFour_RefillStaminaWideText"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/SweepIcon.png",
+                "roi": [
+                    928,
+                    505,
+                    70,
+                    74
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    955,
+                    531,
+                    8,
+                    22
+                ]
+            }
+        }
+    },
+    "ConfirmSweepForTrainingSchool": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "ConfirmSweepForTrainingSchool2",
+            "[JumpBack]DailyFour_RefillStamina",
+            "[JumpBack]DailyFour_RefillStaminaText",
+            "[JumpBack]DailyFour_RefillStaminaWideText",
+            "ConfirmSweepForTrainingSchool"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Sweep",
+                "roi": [
+                    752,
+                    601,
+                    101,
+                    46
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    755,
+                    607,
+                    86,
+                    32
+                ]
+            }
+        }
+    },
+    "ConfirmSweepForTrainingSchoolAlter": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "ConfirmSweepForTrainingSchool2",
+            "[JumpBack]DailyFour_RefillStamina",
+            "[JumpBack]DailyFour_RefillStaminaText",
+            "[JumpBack]DailyFour_RefillStaminaWideText",
+            "ConfirmSweepForTrainingSchoolAlter"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Sweep",
+                "roi": [
+                    839,
+                    600,
+                    103,
+                    49
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    840,
+                    606,
+                    104,
+                    34
+                ]
+            }
+        }
+    },
+    "ConfirmSweepForTrainingSchool2": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "ClickBackFromAnikiTrainingSchool",
+            "[JumpBack]DailyFour_RefillStamina",
+            "[JumpBack]DailyFour_RefillStaminaText",
+            "[JumpBack]DailyFour_RefillStaminaWideText",
+            "ConfirmSweepForTrainingSchool2"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Confirm",
+                "roi": [
+                    679,
+                    430,
+                    124,
+                    50
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    688,
+                    437,
+                    107,
+                    36
+                ]
+            }
+        }
+    },
+    "ClickBackFromAnikiTrainingSchool": {
+        "pre_delay": 400,
+        "post_wait_freezes": 1500,
+        "next": [
+            "ClickBackFromAnikiTrainingSchool2"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "common/BackButton.png",
+                "roi": [
+                    47,
+                    14,
+                    62,
+                    50
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "ClickBackFromAnikiTrainingSchool2": {
+        "post_wait_freezes": 1500,
+        "next": [
+            "ConfirmIsOnSecretRealmScreenAfterTrainingSchool"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "HEAM",
+                    "TEAM",
+                    "EAM"
+                ],
+                "roi": [
+                    1157,
+                    638,
+                    95,
+                    47
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    47,
+                    14,
+                    62,
+                    50
+                ]
+            }
+        }
+    },
+    "ConfirmIsOnSecretRealmScreenAfterTrainingSchool": {
+        "next": [
+            "SweepUpForBondingRealm"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "SecretRealm",
+                    "ealm",
+                    "ecret"
+                ],
+                "roi": [
+                    6,
+                    655,
+                    138,
+                    64
+                ]
+            }
+        }
+    },
+    "SweepUpForBondingRealm": {
+        "post_delay": 4000,
+        "next": [
+            "BondingRealm"
+        ],
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin": [
+                    664,
+                    627,
+                    1,
+                    1
+                ],
+                "end": [
+                    661,
+                    397,
+                    1,
+                    1
+                ]
+            }
+        }
+    },
+    "BondingRealm": {
+        "next": [
+            "ClickSweepIconForBondingRealm"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/BondingRealm.png",
+                "roi": [
+                    814,
+                    100,
+                    115,
+                    300
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "ClickSweepIconForBondingRealm": {
+        "next": [
+            "ConfirmSweepForBondingRealm",
+            "ConfirmSweepForBondingRealmAlter",
+            "[JumpBack]DailyFour_RefillStamina",
+            "[JumpBack]DailyFour_RefillStaminaText",
+            "[JumpBack]DailyFour_RefillStaminaWideText"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "secret_realm/SweepIcon.png",
+                "roi": [
+                    909,
+                    489,
+                    95,
+                    102
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    944,
+                    540,
+                    16,
+                    21
+                ]
+            }
+        }
+    },
+    "ConfirmSweepForBondingRealm": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "ConfirmSweepForBondingRealm2",
+            "[JumpBack]DailyFour_RefillStamina",
+            "[JumpBack]DailyFour_RefillStaminaText",
+            "[JumpBack]DailyFour_RefillStaminaWideText",
+            "ConfirmSweepForBondingRealm"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Sweep",
+                "roi": [
+                    752,
+                    601,
+                    101,
+                    46
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    755,
+                    607,
+                    86,
+                    32
+                ]
+            }
+        }
+    },
+    "ConfirmSweepForBondingRealmAlter": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "ConfirmSweepForBondingRealm2",
+            "[JumpBack]DailyFour_RefillStamina",
+            "[JumpBack]DailyFour_RefillStaminaText",
+            "[JumpBack]DailyFour_RefillStaminaWideText",
+            "ConfirmSweepForBondingRealmAlter"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Sweep",
+                "roi": [
+                    831,
+                    601,
+                    111,
+                    49
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    839,
+                    604,
+                    100,
+                    32
+                ]
+            }
+        }
+    },
+    "ConfirmSweepForBondingRealm2": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "ClickBackFromBondingRealm1",
+            "[JumpBack]DailyFour_RefillStamina",
+            "[JumpBack]DailyFour_RefillStaminaText",
+            "[JumpBack]DailyFour_RefillStaminaWideText",
+            "ConfirmSweepForBondingRealm2"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Confirm",
+                "roi": [
+                    679,
+                    430,
+                    124,
+                    50
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    688,
+                    437,
+                    107,
+                    36
+                ]
+            }
+        }
+    },
+    "ClickBackFromBondingRealm1": {
+        "pre_delay": 400,
+        "post_wait_freezes": 1500,
+        "next": [
+            "ClickBackFromBondingRealm2"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "common/BackButton.png",
+                "roi": [
+                    47,
+                    14,
+                    62,
+                    50
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "ClickBackFromBondingRealm2": {
+        "post_wait_freezes": 1500,
+        "next": [
+            "ConfirmIsOnSecretRealmScreenAfterBondingRealm"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "HEAM",
+                    "TEAM",
+                    "EAM"
+                ],
+                "roi": [
+                    1157,
+                    638,
+                    95,
+                    47
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    47,
+                    14,
+                    62,
+                    50
+                ]
+            }
+        }
+    },
+    "ConfirmIsOnSecretRealmScreenAfterBondingRealm": {
+        "next": [
+            "ClickBackButtonImageUntilHome"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "SecretRealm",
+                    "ealm",
+                    "ecret"
+                ],
+                "roi": [
+                    6,
+                    655,
+                    138,
+                    64
+                ]
+            }
+        }
+    },
+    "DailyFour_RefillStamina": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "DailyFour_DismissBurgerUsed"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "timerift/RecoverStaminaScreen.png",
+                "threshold": 0.6,
+                "roi": [
+                    440,
+                    170,
+                    156,
+                    167
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    871,
+                    228,
+                    56,
+                    40
+                ]
+            }
+        }
+    },
+    "DailyFour_RefillStaminaText": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "DailyFour_DismissBurgerUsed"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "RecoverStamina",
+                    "Recover Stamina",
+                    "Recover",
+                    "Stamina",
+                    "Stmina"
+                ],
+                "roi": [
+                    501,
+                    168,
+                    282,
+                    62
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    871,
+                    228,
+                    56,
+                    40
+                ]
+            }
+        }
+    },
+    "DailyFour_RefillStaminaWideText": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "DailyFour_DismissBurgerUsed"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "RecoverStamina",
+                    "Recover Stamina",
+                    "Recover",
+                    "Stamina",
+                    "Stmina"
+                ],
+                "roi": [
+                    350,
+                    120,
+                    600,
+                    260
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    871,
+                    228,
+                    56,
+                    40
+                ]
+            }
+        }
+    },
+    "DailyFour_DismissBurgerUsed": {
+        "post_wait_freezes": 500,
+        "next": [],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "timerift/BurgerUsed.png",
+                "roi": [
+                    609,
+                    334,
+                    63,
+                    56
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    819,
+                    67,
+                    148,
+                    28
+                ]
+            }
+        }
+    }
+}

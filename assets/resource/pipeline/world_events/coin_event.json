@@ -1,0 +1,89 @@
+{
+    "StartTreasureInTheDunes": {
+        "next": [
+            "WorldEventBattleFlow"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Treasure",
+                "roi": [
+                    534,
+                    172,
+                    260,
+                    59
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    713,
+                    497,
+                    83,
+                    38
+                ]
+            }
+        }
+    },
+    "StartAncientMountainTomb": {
+        "next": [
+            "WorldEventBattleFlow"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Ancient",
+                "roi": [
+                    534,
+                    172,
+                    260,
+                    59
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    713,
+                    497,
+                    83,
+                    38
+                ]
+            }
+        }
+    },
+    "StartUnavoidableConfrontation": {
+        "next": [
+            "WorldEventBattleFlow"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "Unavoidable",
+                    "Confrontation"
+                ],
+                "roi": [
+                    534,
+                    172,
+                    260,
+                    59
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    713,
+                    497,
+                    83,
+                    38
+                ]
+            }
+        }
+    }
+}

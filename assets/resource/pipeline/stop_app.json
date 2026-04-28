@@ -1,0 +1,10 @@
+{
+    "StopApp": {
+        "action": {
+            "type": "StopApp",
+            "param": {
+                "package": "com.zlongame.un.mhmnz"
+            }
+        }
+    }
+}

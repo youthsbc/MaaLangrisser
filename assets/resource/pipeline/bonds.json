@@ -1,0 +1,322 @@
+{
+    "Bonds": {
+        "next": [
+            "OpenBonds"
+        ]
+    },
+    "OpenBonds": {
+        "next": [
+            "OpenShardSweep"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "mainscreen/BondsIcon.png",
+                "roi": [
+                    752,
+                    642,
+                    65,
+                    47
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "OpenShardSweep": {
+        "next": [
+            "Character1"
+        ],
+        "post_wait_freezes": 500,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": "Sweep",
+                "roi": [
+                    634,
+                    276,
+                    84,
+                    71
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "Character1": {
+        "next": [
+            "CheckShardSweepForCharacter1",
+            "[JumpBack]SweepShardsForcharacter1"
+        ]
+    },
+    "Character2": {
+        "next": [
+            "CheckShardSweepForCharacter2",
+            "[JumpBack]SweepShardsForcharacter2"
+        ]
+    },
+    "Character3": {
+        "next": [
+            "CheckShardSweepForCharacter3",
+            "[JumpBack]SweepShardsForcharacter3"
+        ]
+    },
+    "CheckShardSweepForCharacter1": {
+        "next": [
+            "Character2"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "bonds/AlreadySweptShards.png",
+                "threshold": 0.96,
+                "roi": [
+                    824,
+                    286,
+                    44,
+                    42
+                ]
+            }
+        }
+    },
+    "CheckShardSweepForCharacter2": {
+        "next": [
+            "Character3"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "bonds/AlreadySweptShards.png",
+                "threshold": 0.96,
+                "roi": [
+                    948,
+                    285,
+                    47,
+                    45
+                ]
+            }
+        }
+    },
+    "CheckShardSweepForCharacter3": {
+        "next": [
+            "ClickBackButton"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "bonds/AlreadySweptShards.png",
+                "threshold": 0.96,
+                "roi": [
+                    1066,
+                    275,
+                    55,
+                    59
+                ]
+            }
+        }
+    },
+    "SweepShardsForcharacter1": {
+        "next": [
+            "ConfirmFirstBoxChecked",
+            "[JumpBack]CheckFirstBox"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "bonds/HaventSweptShards.png",
+                "roi": [
+                    824,
+                    286,
+                    44,
+                    42
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "SweepShardsForcharacter2": {
+        "next": [
+            "ConfirmFirstBoxChecked",
+            "[JumpBack]CheckFirstBox"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "bonds/HaventSweptShards.png",
+                "roi": [
+                    949,
+                    279,
+                    46,
+                    53
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "SweepShardsForcharacter3": {
+        "next": [
+            "ConfirmFirstBoxChecked",
+            "[JumpBack]CheckFirstBox"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "bonds/HaventSweptShards.png",
+                "roi": [
+                    1066,
+                    275,
+                    55,
+                    59
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "ConfirmFirstBoxChecked": {
+        "next": [
+            "ConfirmSecondBoxChecked",
+            "[JumpBack]CheckSecondBox"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "bonds/CheckedBox.png",
+                "roi": [
+                    1174,
+                    299,
+                    41,
+                    42
+                ]
+            }
+        }
+    },
+    "ConfirmSecondBoxChecked": {
+        "next": [
+            "ConfirmThirdBoxChecked",
+            "[JumpBack]CheckThirdBox"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "bonds/CheckedBox.png",
+                "roi": [
+                    1177,
+                    415,
+                    35,
+                    36
+                ]
+            }
+        }
+    },
+    "ConfirmThirdBoxChecked": {
+        "next": [
+            "ClickSweepButton"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "bonds/CheckedBox.png",
+                "roi": [
+                    1177,
+                    527,
+                    36,
+                    36
+                ]
+            }
+        }
+    },
+    "CheckFirstBox": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "bonds/UncheckedBox.png",
+                "roi": [
+                    1174,
+                    299,
+                    41,
+                    42
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "CheckSecondBox": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "bonds/UncheckedBox.png",
+                "roi": [
+                    1177,
+                    415,
+                    35,
+                    36
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "CheckThirdBox": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "bonds/UncheckedBox.png",
+                "roi": [
+                    1177,
+                    527,
+                    36,
+                    36
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    },
+    "ClickSweepButton": {
+        "next": [
+            "CloseSweepCountBox"
+        ],
+        "recognition": {
+            "type": "DirectHit"
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    947,
+                    640,
+                    113,
+                    41
+                ]
+            }
+        }
+    },
+    "CloseSweepCountBox": {
+        "recognition": {
+            "type": "DirectHit"
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    53,
+                    333,
+                    97,
+                    105
+                ]
+            }
+        }
+    }
+}
