@@ -286,6 +286,9 @@
     },
     "ClickSweepButton": {
         "next": [
+            "[JumpBack]Bonds_RefillStamina",
+            "[JumpBack]Bonds_RefillStaminaText",
+            "[JumpBack]Bonds_RefillStaminaWideText",
             "CloseSweepCountBox"
         ],
         "recognition": {
@@ -299,6 +302,133 @@
                     640,
                     113,
                     41
+                ]
+            }
+        }
+    },
+    "Bonds_RefillStamina": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "Bonds_DismissBurgerUsed"
+        ],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "timerift/RecoverStaminaScreen.png",
+                "threshold": 0.6,
+                "roi": [
+                    440,
+                    170,
+                    156,
+                    167
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    871,
+                    228,
+                    56,
+                    40
+                ]
+            }
+        }
+    },
+    "Bonds_RefillStaminaText": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "Bonds_DismissBurgerUsed"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "RecoverStamina",
+                    "Recover Stamina",
+                    "Recover",
+                    "Stamina",
+                    "Stmina"
+                ],
+                "roi": [
+                    501,
+                    168,
+                    282,
+                    62
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    871,
+                    228,
+                    56,
+                    40
+                ]
+            }
+        }
+    },
+    "Bonds_RefillStaminaWideText": {
+        "post_wait_freezes": 1000,
+        "next": [
+            "Bonds_DismissBurgerUsed"
+        ],
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "expected": [
+                    "RecoverStamina",
+                    "Recover Stamina",
+                    "Recover",
+                    "Stamina",
+                    "Stmina"
+                ],
+                "roi": [
+                    350,
+                    120,
+                    600,
+                    260
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    871,
+                    228,
+                    56,
+                    40
+                ]
+            }
+        }
+    },
+    "Bonds_DismissBurgerUsed": {
+        "post_wait_freezes": 500,
+        "next": [],
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "template": "timerift/BurgerUsed.png",
+                "roi": [
+                    609,
+                    334,
+                    63,
+                    56
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    819,
+                    67,
+                    148,
+                    28
                 ]
             }
         }

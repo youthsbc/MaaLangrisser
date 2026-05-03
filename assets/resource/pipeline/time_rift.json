@@ -120,8 +120,8 @@
                     32
                 ],
                 "end": [
-                    402,
-                    384,
+                    349,
+                    387,
                     68,
                     28
                 ]
@@ -288,6 +288,7 @@
         }
     },
     "TimeRift_ClickSweepAgainFirst": {
+        "pre_wait_freezes": 1000,
         "post_wait_freezes": 1000,
         "next": [
             "TimeRift_DailySweepLimitReached",
@@ -300,18 +301,17 @@
             "type": "OCR",
             "param": {
                 "expected": [
-                    "Sweep Count",
+                    "SweepAgain",
+                    "Sweep Again",
                     "Sweep",
-                    "Count",
-                    "sweep count",
-                    "sweep",
-                    "count"
+                    "sweep again",
+                    "sweep"
                 ],
                 "roi": [
-                    455,
-                    12,
-                    369,
-                    165
+                    674,
+                    558,
+                    140,
+                    108
                 ]
             }
         },
@@ -328,6 +328,7 @@
         }
     },
     "TimeRift_ClickSweepAgainSecond": {
+        "pre_wait_freezes": 1000,
         "post_wait_freezes": 1000,
         "next": [
             "TimeRift_DailySweepLimitReached",
@@ -340,18 +341,17 @@
             "type": "OCR",
             "param": {
                 "expected": [
-                    "Sweep Count",
+                    "SweepAgain",
+                    "Sweep Again",
                     "Sweep",
-                    "Count",
-                    "sweep count",
-                    "sweep",
-                    "count"
+                    "sweep again",
+                    "sweep"
                 ],
                 "roi": [
-                    455,
-                    12,
-                    369,
-                    165
+                    674,
+                    558,
+                    140,
+                    108
                 ]
             }
         },
